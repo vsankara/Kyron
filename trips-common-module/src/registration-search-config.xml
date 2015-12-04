@@ -1,0 +1,294 @@
+ <searchList>
+   <search>
+    <note>USED FOR SELECTING AN INDIVIDUAL DUPLICATE SEARCH</note>
+    <id>FIND_DUPICATE_INDV_ENTITY</id>
+    <sectionHeading>Find Indv</sectionHeading>
+    <windowHeading>TRIPS - Find Indv</windowHeading>
+    <criteriaFields>
+        <field>
+        <fieldName>firstName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>First Name</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.FIRST_NAME</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+      </field>
+      <field>
+        <fieldName>lastName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Last Name</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.LAST_NAME</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+      </field>  
+       <field>
+        <fieldName>middleName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Middle Name</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.MIDDLE_NAME</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+      </field>     
+      <field>
+        <fieldName>dateOfBirth</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Date Of Birth</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.DATE_OF_BIRTH</columnName>
+      </field>  
+    </criteriaFields>
+    <resultFields>
+       <field>
+        <columnOrderNbr>1</columnOrderNbr>
+        <fieldName>entityType</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Entity Type</columnHeading>
+        <columnName>ENT_ENTITY.entity_type</columnName>
+        <getValueFromResources>Y</getValueFromResources>
+      </field>
+      <field>
+        <columnOrderNbr>2</columnOrderNbr>
+        <fieldName>entityName</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Name</columnHeading>
+        <columnName>ENT_ENTITY.entity_name</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>3</columnOrderNbr>
+        <fieldName>Address</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Address</columnHeading>
+        <columnName>concat( decode(ENT_LOCATION.STREET_NAME, null, '',
+                    concat(ENT_LOCATION.STREET_NAME, ', ')), concat(
+                    decode(ENT_LOCATION.BUILDING_NAME, null, '',
+                    concat(ENT_LOCATION.BUILDING_NAME, ', ')), concat(
+                    decode(ENT_LOCATION.HOUSE_NUMBER, null, '',
+                    concat(ENT_LOCATION.HOUSE_NUMBER, ', ')), concat(
+                    decode(ENT_LOCATION.city, null, '',
+                    concat(ENT_LOCATION.city, ', ')), ENT_LOCATION.city ) )
+                    ) ) as ADDRESS</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>4</columnOrderNbr>
+        <fieldName>FullAddress</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>FullAddress</columnHeading>
+        <columnName>concat(decode(ENT_LOCATION.STREET_NAME, null, '',concat(ENT_LOCATION.STREET_NAME, ', ')), 
+                    concat(decode(ENT_LOCATION.BUILDING_NAME, null, '',concat(ENT_LOCATION.BUILDING_NAME, ', ')), 
+                    concat(decode(ENT_LOCATION.HOUSE_NUMBER, null, '',concat(ENT_LOCATION.HOUSE_NUMBER, ', ')), 
+                    concat(decode(ENT_LOCATION.city, null, '', concat(ENT_LOCATION.city, ', ')),
+                    concat(location1.description, concat(', ', concat(ref_location_by_country.description, concat(' ', ENT_LOCATION.postal_code))))))))
+                    as FullAddress</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>5</columnOrderNbr>
+        <fieldName>tin</fieldName>
+        <fieldType>tinformat</fieldType>
+        <columnHeading>TIN</columnHeading>
+        <columnName>REV_ACC.ACCT_NO</columnName>
+      </field>
+        <field>
+         <columnOrderNbr>6</columnOrderNbr>
+        <fieldName>firstName</fieldName>
+        <fieldType>string</fieldType>
+        <columnName>ENT_INDIVIDUAL.FIRST_NAME</columnName>
+      </field>
+      <field>
+       <columnOrderNbr>7</columnOrderNbr>
+        <fieldName>lastName</fieldName>
+        <fieldType>string</fieldType>
+        <columnName>ENT_INDIVIDUAL.LAST_NAME</columnName>
+      </field>  
+       <field>
+        <columnOrderNbr>8</columnOrderNbr>
+        <fieldName>middleName</fieldName>
+        <fieldType>string</fieldType>
+        <columnName>ENT_INDIVIDUAL.MIDDLE_NAME</columnName>
+      </field>     
+       <field>
+        <columnOrderNbr>10</columnOrderNbr>
+        <fieldName>dateOfBirth</fieldName>
+        <fieldType>date</fieldType>
+        <columnName>ENT_INDIVIDUAL.DATE_OF_BIRTH</columnName>
+      </field> 
+      <field>
+        <columnOrderNbr>11</columnOrderNbr>
+        <fieldName>rdo</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>RDO</columnHeading>
+        <columnName>REV_ACC.REF_OFFICE</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>99</columnOrderNbr>
+        <fieldName>ID</fieldName>
+        <fieldType>number</fieldType>
+        <columnHeading>EntityID</columnHeading>
+        <columnName>ENT_ENTITY.id</columnName>
+        <isIdField>Y</isIdField>
+        <isVisible>N</isVisible>
+      </field>
+    </resultFields>
+    <searchTables>
+      <table>
+        <name>ENT_INDIVIDUAL INNER JOIN ENT_ENTITY ON
+              ENT_ENTITY.id=ENT_INDIVIDUAL.id LEFT OUTER JOIN ENT_LOCATION ON
+              ENT_ENTITY.id=ENT_LOCATION.ent_entity left outer join REV_ACC on ENT_ENTITY.id=REV_ACC.ent_entity
+              inner join REV_ENTITY_ACC on REV_ACC.id = REV_ENTITY_ACC.id 
+              left outer join REF_LOCATION_BY_COUNTRY on ENT_LOCATION.city=TO_CHAR(REF_LOCATION_BY_COUNTRY.code) 
+              left outer join REF_LOCATION_BY_COUNTRY location1 on to_char(location1.code) = ENT_LOCATION.province
+        </name>
+      </table>
+    </searchTables>
+    <joinQuery>(REV_ACC.REVENUE_TYPE = 'TAXPAYER' OR REV_ACC.REVENUE_TYPE IS
+               NULL) AND (ENT_LOCATION.IDENTIFYING_ADDRESS_INDICATOR = 'T' or
+               ENT_LOCATION.IDENTIFYING_ADDRESS_INDICATOR is null)</joinQuery>
+    <actions>
+      <action>
+        <actionId>add</actionId>
+        <actionLabel>Add</actionLabel>
+        <actionCallBack>add</actionCallBack>
+        <allowableModes>addMode</allowableModes>
+      </action>
+    </actions>
+  </search>
+   <search>
+    <note>USED FOR SELECTING AN ORGANISATION DUPLICATE SEARCH</note>
+    <id>FIND_DUPICATE_ORG_ENTITY</id>
+    <sectionHeading>Find Organisation</sectionHeading>
+    <windowHeading>TRIPS - Find Organisation</windowHeading>
+    <criteriaFields>
+       <field>
+        <fieldName>companyName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Company Name</fieldLabel>
+        <columnName>ENT_ORGANIZATION.legal_name</columnName>
+         <fieldFunction>SOUNDEX</fieldFunction>
+      </field>
+      <field>
+        <fieldName>tradingName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Trading Name</fieldLabel>
+        <columnName>ENT_ORGANIZATION.TRADING_AS</columnName>
+         <fieldFunction>SOUNDEX</fieldFunction>
+      </field>
+      <field>
+        <fieldName>companyRegNo</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Company Registration No</fieldLabel>
+        <columnName>ENT_ORGANIZATION.COMPANY_REG_NO</columnName>
+      </field>      
+    </criteriaFields>
+    <resultFields>
+      <field>
+        <columnOrderNbr>1</columnOrderNbr>
+        <fieldName>companyName</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Company Name</columnHeading>
+        <columnName>ENT_ORGANIZATION.legal_name as companyName</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>2</columnOrderNbr>
+        <fieldName>companyRegistrationNo</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Company Name</columnHeading>
+        <columnName>ENT_ORGANIZATION.COMPANY_REG_NO as companyRegistrationNo</columnName>
+      </field>      
+      <field>
+        <columnOrderNbr>3</columnOrderNbr>
+        <fieldName>Address</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Address</columnHeading>
+        <columnName>ENT_LOCATION.STREET_NAME as Address</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>4</columnOrderNbr>
+        <fieldName>FullAddress</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>FullAddress</columnHeading>
+        <columnName>concat(decode(ENT_LOCATION.STREET_NAME, null, '',concat(ENT_LOCATION.STREET_NAME, ', ')), 
+                    concat(decode(ENT_LOCATION.BUILDING_NAME, null, '',concat(ENT_LOCATION.BUILDING_NAME, ', ')), 
+                    concat(decode(ENT_LOCATION.HOUSE_NUMBER, null, '',concat(ENT_LOCATION.HOUSE_NUMBER, ', ')), 
+                    concat(decode(ENT_LOCATION.city, null, '', concat(ENT_LOCATION.city, ', ')),
+                    concat(location1.description, concat(', ', concat(ref_location_by_country.description, concat(' ', ENT_LOCATION.postal_code))))))))
+                    as FullAddress</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>5</columnOrderNbr>
+        <fieldName>City</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>City</columnHeading>
+        <columnName>ENT_LOCATION.city as City</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>6</columnOrderNbr>
+        <fieldName>ID</fieldName>
+        <fieldType>number</fieldType>
+        <columnHeading>EntityID</columnHeading>
+        <columnName>ENT_ENTITY.id as ID</columnName>
+        <isIdField>Y</isIdField>
+        <isVisible>N</isVisible>
+      </field>
+       <field>
+        <columnOrderNbr>7</columnOrderNbr>
+        <fieldName>entityName</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Name</columnHeading>
+        <columnName>ENT_ENTITY.entity_name</columnName>
+      </field>
+       <field>
+        <columnOrderNbr>8</columnOrderNbr>
+        <fieldName>tin</fieldName>
+        <fieldType>tinformat</fieldType>
+        <columnHeading>TIN</columnHeading>
+        <columnName>REV_ACC.ACCT_NO</columnName>
+      </field>
+        <field>
+        <columnOrderNbr>9</columnOrderNbr>
+        <fieldName>tradingAs</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>TradingAs</columnHeading>
+        <columnName>ENT_ORGANIZATION.TRADING_AS</columnName>
+      </field>
+         <field>
+        <columnOrderNbr>10</columnOrderNbr>
+        <fieldName>entityType</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Entity Type</columnHeading>
+        <columnName>ENT_ENTITY.entity_type</columnName>
+        <getValueFromResources>Y</getValueFromResources>
+      </field>
+      <field>
+        <columnOrderNbr>11</columnOrderNbr>
+        <fieldName>rdo</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>RDO</columnHeading>
+        <columnName>REV_ACC.REF_OFFICE</columnName>
+      </field>
+      <field>
+        <fieldName>businessStartDate</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Business Start Date</fieldLabel>
+        <columnName>ENT_ORGANIZATION.BUSINESS_START_DATE</columnName>
+      </field>  
+    </resultFields>
+    <searchTables>
+      <table>
+        <name>ENT_ORGANIZATION INNER JOIN ENT_ENTITY ON
+              ENT_ENTITY.id=ENT_ORGANIZATION.id LEFT OUTER JOIN ENT_LOCATION ON
+              ENT_ENTITY.id=ENT_LOCATION.ent_entity left outer join REV_ACC on ENT_ENTITY.id=REV_ACC.ent_entity 
+              inner join REV_ENTITY_ACC on REV_ACC.id = REV_ENTITY_ACC.id 
+              left outer join REF_LOCATION_BY_COUNTRY on ENT_LOCATION.city=TO_CHAR(REF_LOCATION_BY_COUNTRY.code) 
+              left outer join REF_LOCATION_BY_COUNTRY location1 on to_char(location1.code) = ENT_LOCATION.province
+        </name>
+      </table>
+    </searchTables>
+    <joinQuery>(REV_ACC.REVENUE_TYPE = 'TAXPAYER' OR REV_ACC.REVENUE_TYPE IS
+               NULL) AND (ENT_LOCATION.IDENTIFYING_ADDRESS_INDICATOR = 'T' or
+               ENT_LOCATION.IDENTIFYING_ADDRESS_INDICATOR is null)</joinQuery>
+    <actions>
+      <action>
+        <actionId>add</actionId>
+        <actionLabel>Add</actionLabel>
+        <actionCallBack>add</actionCallBack>
+        <allowableModes>addMode</allowableModes>
+      </action>
+    </actions>
+  </search>
+</searchList>
+

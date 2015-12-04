@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema targetNamespace="http://trips.technobrain.com/entityandregimeaccounting/message" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://trips.technobrain.com/entityandregimeaccounting/message" xmlns:core="http://trips.technobrain.com/core/message">
+	<xsd:import namespace="http://trips.technobrain.com/core/message" schemaLocation="trips-core.xsd"/>
+	
+        <xsd:element name="AccountType" type="AccountType"/>
+	<xsd:complexType name="AccountType">
+		<xsd:complexContent>
+			<xsd:extension base="core:InputType">
+				<xsd:sequence>
+                                        <xsd:element name="TaxAccountType" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="AccountNumber" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="AccountBalance" type="xsd:decimal" minOccurs="0"/>
+                                        <xsd:element name="EntityID" type="xsd:long" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+     
+        <xsd:element name="RevenueAccountType" type="RevenueAccountType"/>
+	<xsd:complexType name="RevenueAccountType">
+		<xsd:complexContent>
+			<xsd:extension base="AccountType">
+				<xsd:sequence>
+                    <xsd:element name="RevenueType" type="xsd:string" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="PeriodType" type="PeriodType"/>
+	<xsd:complexType name="PeriodType">
+		<xsd:complexContent>
+			<xsd:extension base="core:InputType">
+				<xsd:sequence>
+					<xsd:element name="PaymentDue" type="xsd:date" minOccurs="0"/>
+					<xsd:element name="PeriodEnd" type="xsd:date" minOccurs="0"/>
+					<xsd:element name="PeriodNo" type="xsd:int" minOccurs="0"/>
+					<xsd:element name="PeriodStart" type="xsd:date" minOccurs="0"/>
+					<xsd:element name="PeriodYear" type="xsd:int" minOccurs="0"/>
+					<xsd:element name="RegimeType" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="ReturnDue" type="xsd:date" minOccurs="0"/>
+                                        <xsd:element name="RegimeAccountId" type="xsd:long" minOccurs="0" maxOccurs="1"/>
+                                        <xsd:element name="RevenueType" type="xsd:string" minOccurs="0"/>
+                                        <xsd:element name="RevenueReturnType" type="xsd:string" minOccurs="0"/>
+                                        <xsd:element name="RegistrationDate" type="xsd:date" minOccurs="0"/>
+                                        <xsd:element name="FilingFrequency" type="xsd:string" minOccurs="0"/>
+                                        <xsd:element name="OverrideNumberOfPeriods" type="xsd:int" minOccurs="0"/>
+                                        <xsd:element name="AccountEndMonth" type="xsd:int" minOccurs="0"/>
+                                        <xsd:element name="AccountEndDay" type="xsd:int" minOccurs="0"/>
+                                        <xsd:element name="FiscalIndicator" type="xsd:boolean" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+        
+</xsd:schema>

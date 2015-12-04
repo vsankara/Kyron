@@ -1,0 +1,10 @@
+import groovy.sql.Sql
+class ComplianceRule{
+  static void main(String[] args) {
+    def sql = Sql.newInstance("jdbc:oracle:thin:trips/trips@//dev-db:1521/trips", "trips",
+           "trips", "oracle.jdbc.OracleDriver")
+    sql.eachRow("select * from ENT_ENTITY"){ 
+      println it.id + " ${it.id}"
+    }
+  }
+}

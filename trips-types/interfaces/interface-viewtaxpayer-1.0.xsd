@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://trips.technobrain.com/interfaces/viewtaxpayer/message" 
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+			xmlns:bt="http://trips.technobrain.com/interfaces/basetypes/message" 
+			xmlns:tns="http://trips.technobrain.com/interfaces/viewtaxpayer/message" 
+			xmlns:reg="http://trips.technobrain.com/interfaces/registration/common/message" 
+			version="1.0">
+	<xsd:import 	namespace="http://trips.technobrain.com/interfaces/basetypes/message" 			 				schemaLocation="interface-basetypes-1.0.xsd"/>
+
+	<xsd:import 	namespace="http://trips.technobrain.com/interfaces/registration/common/message" 			 	
+								schemaLocation="interface-registration-basetypes-1.0.xsd"/>		
+	
+	<!-- *********************************** Service input and output types *********************************** -->
+<!--	<xsd:element name="ViewIndividualDetailsRequest" type="tns:ViewIndividualDetailsRequest"/>
+	<xsd:complexType name="ViewIndividualDetailsRequest">
+		<xsd:sequence>
+			<xsd:element name="TIN" type="bt:TINType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="ViewIndividualDetailsResponse" type="tns:ViewIndividualDetailsResponse"/>
+	<xsd:complexType name="ViewIndividualDetailsResponse">
+		<xsd:complexContent>
+			<xsd:extension base="bt:ServiceResponseType">
+				<xsd:sequence>
+					<xsd:element name="IndividualDetails" type="tt:IndividualDetailsType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="ViewOrganisationDetailsRequest" type="tns:ViewOrganisationDetailsRequest"/>
+	<xsd:complexType name="ViewOrganisationDetailsRequest">
+		<xsd:sequence>
+			<xsd:element name="TIN" type="bt:TINType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ViewOrganisationDetailsResponse" type="tns:ViewOrganisationDetailsResponse"/>
+	<xsd:complexType name="ViewOrganisationDetailsResponse">
+		<xsd:complexContent>
+			<xsd:extension base="bt:ServiceResponseType">
+				<xsd:sequence>
+					<xsd:element name="OrganisationDetails" type="tt:OrganisationDetailsType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	
+	<xsd:element name="IndividualDetails" type="tns:IndividualDetailsType"/>
+	<xsd:complexType name="IndividualDetailsType">
+		<xsd:complexContent>
+			<xsd:extension base="tns:TaxpayerDetailsType">
+				<xsd:sequence>
+					<xsd:element name="Title" type="bt:TitleType"/>
+					<xsd:element name="FirstName" type="bt:NameType"/>
+					<xsd:element name="MiddleName" type="bt:NameType" minOccurs="0"/>
+					<xsd:element name="LastName" type="bt:NameType"/>
+					<xsd:element name="Category" type="bt:IndividualCategoryType"/>
+					<xsd:element name="Status" type="xsd:string"/>
+					<xsd:element name="PreviousLastName" type="bt:NameType" minOccurs="0"/>
+					<xsd:element name="Gender" type="bt:GenderType"/>
+					<xsd:element name="MaritalStatus" type="bt:MaritalType"/>
+					<xsd:element name="DateOfBirth" type="xsd:date"/>
+					<xsd:element name="EstimatedDateOfBirth" type="xsd:boolean"/>
+					<xsd:element name="PreviousFullName" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="MothersMaidenLastName" type="bt:NameType"/>
+					<xsd:element name="MothersFirstName" type="bt:NameType" minOccurs="0"/>
+					<xsd:element name="MothersMiddleName" type="bt:NameType" minOccurs="0"/>
+					<xsd:element name="BirthVillageTown" type="bt:TownType"/>
+					<xsd:element name="CountryofBirth" type="bt:CountryType"/>
+					<xsd:element name="BirthRegion" type="bt:RegionType" minOccurs="0"/>
+					<xsd:element name="BirthDistrict" type="bt:DistrictType" minOccurs="0"/>
+					<xsd:element name="Nationality" type="bt:CountryType"/>
+					<xsd:element name="Resident" type="xsd:boolean"/>
+					<xsd:element name="TaxConsultant" type="xsd:boolean"/>
+					<xsd:element name="DateofDeregistration" type="xsd:date" minOccurs="0"/>
+					<xsd:element name="Forcedregistration" type="xsd:boolean" minOccurs="0"/>
+					<xsd:element name="AssignedTaxOffice" type="bt:OfficeType" minOccurs="0"/>
+					<xsd:element name="Occupation" type="tns:OccupationType" minOccurs="0"/>
+					<xsd:element name="Employment" type="tns:EmploymentType" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+-->
+	<xsd:element name="OrganisationDetails" type="tns:OrganisationDetailsType"/>
+	<xsd:complexType name="OrganisationDetailsType">
+		<xsd:complexContent>
+			<xsd:extension base="tns:TaxpayerDetailsType">
+				<xsd:sequence>
+					<xsd:element name="organisationCategory" type="xsd:string"/>
+					<xsd:element name="organisation" type="bt:OrganisationNameType"/>
+					<xsd:element name="tradingAs" type="bt:OrganisationNameType" minOccurs="0"/>
+					<xsd:element name="status" type="xsd:string"/>
+					<xsd:element name="dateofIncorporation" type="xsd:date" minOccurs="0"/>
+					<xsd:element name="accountYearEndDay" type="xsd:integer" minOccurs="0"/>
+					<xsd:element name="accountYearEndMonth" type="xsd:integer" minOccurs="0"/>
+					<xsd:element name="taxConsultantStatus" type="xsd:boolean" minOccurs="0"/>
+					<xsd:element name="website" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="assignedTaxOffice" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="applicantTIN" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="firstName" type="bt:NameType" minOccurs="0"/>
+					<xsd:element name="middleName" type="bt:NameType" minOccurs="0"/>
+					<xsd:element name="lastName" type="bt:NameType" minOccurs="0"/>
+					<!--Free Text -->
+					<xsd:element name="postalAddress" type="xsd:string" minOccurs="0"/>
+
+					<xsd:element name="contactDetails" type="xsd:string" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+	<xsd:complexType name="TaxpayerDetailsType">
+		<xsd:sequence>
+			<xsd:element name="tin" type="xsd:string"/>
+			<xsd:element name="businessSector" type="bt:BusinessSectorType" minOccurs="0" maxOccurs="unbounded"/>
+			<!-- List of addresses, one and only one of which must be marked as primary -->
+			<xsd:element name="importer" type="xsd:boolean"/>
+			<xsd:element name="exporter" type="xsd:boolean"/>
+			<xsd:element name="address" type="reg:AddressInfoType" maxOccurs="unbounded"/>
+			<!-- List of contact methods, one and only one of which must be marked as primary -->
+			<xsd:element name="contactMethod" type="reg:ContactMethodType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	
+    <xsd:complexType name="TaxpayerStatusType">
+		<xsd:complexContent>
+			<xsd:extension base="bt:ServiceResponseType">
+        <xsd:sequence>
+            <xsd:element name="tin" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="taxpayerName" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="registrationStatus" type="reg:RegStatus" minOccurs="0"/>
+        </xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+    </xsd:complexType>
+
+	
+	
+<!--	<xsd:element name="ViewAccountDetailsRequest" type="tns:ViewAccountDetailsRequest"/>
+	<xsd:complexType name="ViewAccountDetailsRequest">
+		<xsd:sequence>
+			<xsd:element name="TIN" type="bt:TINType"/>
+                        <xsd:element name="TaxType" type="bt:TaxDetailType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ViewAccountDetailsResponse" type="tns:ViewAccountDetailsResponse"/>
+	<xsd:complexType name="ViewAccountDetailsResponse">
+		<xsd:complexContent>
+			<xsd:extension base="bt:ServiceResponseType">
+				<xsd:sequence>
+					<xsd:element name="TIN" type="bt:TINType" minOccurs="0"/>
+					<xsd:element name="Balance" type="xsd:decimal" minOccurs="0"/>
+					<xsd:element name="PeriodicAccounts" type="tt:PeriodicAccountType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="NonPeriodicAccounts" type="tt:NonPeriodicAccountType" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="ViewAvailableReturnDetailsRequest" type="tns:ViewAvailableReturnDetailsRequest"/>
+	<xsd:complexType name="ViewAvailableReturnDetailsRequest">
+		<xsd:sequence>
+			<xsd:element name="TIN" type="bt:TINType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ViewAvailableReturnDetailsResponse" type="tns:ViewAvailableReturnDetailsResponse"/>
+	<xsd:complexType name="ViewAvailableReturnDetailsResponse">
+		<xsd:complexContent>
+			<xsd:extension base="bt:ServiceResponseType">
+				<xsd:sequence>
+					<xsd:element name="TIN" type="bt:TINType" minOccurs="0"/>
+					<xsd:element name="ReturnDocumentDetails" type="tt:ReturnDocumentDetailsType" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+-->		
+</xsd:schema>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Trips+</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+            <h:form id="welcomeForm">
+
+                <p:layout fullPage="true">
+
+                    <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                        <h:panelGrid id="headerPanel" bodyrows="1" columns="3">
+                            <p:graphicImage url="/images/trips_new_logo.png" height="65" width="200"/>
+                        </h:panelGrid>
+                        <!--p:separator style="width:100%;height:5px"></p:separator-->
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="south" size="110" closable="true" collapsible="true">
+                        <h:panelGrid id="footerPanel" bodyrows="3" columns="3">
+                            <p:clock pattern="dd/MM/yyyy HH:mm:ss"/>
+                            <p:spacer width="325" height="1"/>
+                            <p:graphicImage url="/images/tb-logo.png" height="70"/>
+
+                        </h:panelGrid>
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="west" size="250" header="Menu" collapsible="true">
+
+                        <p:panelMenu>
+                            <p:submenu label="Register Taxpayer">
+                                <p:menuitem value="Register Organisation" outcome="RegisterOrganisation"/>
+                            </p:submenu>
+                            <p:submenu label="Manage Taxpayer">
+                                <p:menuitem value="View Organisation" url="#" />
+                            </p:submenu>
+                            <p:submenu label="Taxpayer Accounting">
+                                <p:menuitem value="Taxpayer Account Enquiry" url="#" />
+                            </p:submenu>
+                        </p:panelMenu>
+
+                        <!--p:menu toggleable="true">
+                            <p:submenu label="Register Taxpayer">
+                                <p:menuitem value="Register Organisation" url="#" />
+                            </p:submenu>
+                            <p:submenu label="Manage Taxpayer">
+                                <p:menuitem value="View Organisation" url="#" />
+                            </p:submenu>
+                            <p:submenu label="Accounting">
+                                <p:menuitem value="Taxpayer Account Enquiry" url="#" />
+                            </p:submenu>
+                        </p:menu-->
+
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="center">
+
+                        <center><h3>Welcome to Trips+</h3></center>
+                        <!--p:megaMenu orientation="horizontal" > 
+                            <p:submenu label="Registration" icon="ui-icon-document">
+                                <p:column>
+                                    <p:submenu label="Register Taxpayer">
+                                        <p:menuitem value="Register Organisation" url="#" />
+                                        <p:menuitem value="Register Individual" url="#" />
+                                    </p:submenu>
+                                </p:column>
+    
+                                <p:column>
+                                    <p:submenu label="Manage Taxpayer">
+                                        <p:menuitem value="View Organisation" url="#" />
+                                    </p:submenu>
+                                </p:column>
+                            </p:submenu>
+    
+                            <p:submenu label="Taxpayer Accounting System" icon="ui-icon-document">
+                                <p:column>
+                                    <p:submenu label="Accounting">
+                                        <p:menuitem value="Taxpayer Account Enquiry" url="#" />
+                                    </p:submenu>
+                                </p:column>
+                            </p:submenu>
+                        </p:megaMenu-->
+
+                    </p:layoutUnit>
+
+                </p:layout>
+            </h:form>
+
+        </h:body>
+
+    </f:view>
+</html>
+

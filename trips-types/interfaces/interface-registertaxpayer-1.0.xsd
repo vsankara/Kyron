@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xsd:schema targetNamespace="http://trips.technobrain.com/interfaces/registration/message" 
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+			xmlns:tns="http://trips.technobrain.com/interfaces/registration/message" 
+			xmlns:rbt="http://trips.technobrain.com/interfaces/registration/common/message" 
+			xmlns:bt="http://trips.technobrain.com/interfaces/basetypes/message"
+           version="1.0">
+	<xsd:import namespace="http://trips.technobrain.com/interfaces/basetypes/message" schemaLocation="interface-basetypes-1.0.xsd"/>
+
+	<xsd:import namespace="http://trips.technobrain.com/interfaces/registration/common/message" schemaLocation="interface-registration-basetypes-1.0.xsd"/>
+
+	
+  <xsd:complexType name="RegisterOrganisation">
+    <xsd:sequence>
+      <xsd:element name="OrganisationRegistrationObj" type="tns:OrgReg"
+               minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+    <xsd:complexType name="OrgReg">
+        <xsd:sequence>
+            <xsd:element name="accountYearEndDay" type="xsd:integer"/>
+            <xsd:element name="accoutYearEndMonth" type="xsd:integer"/>
+            <xsd:element name="businessName" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="commencementDate" type="xsd:dateTime" minOccurs="0"/>
+            <xsd:element name="legalStatusType" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="incorporationDate" type="xsd:dateTime" minOccurs="0"/>
+            <xsd:element name="isicCodes" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="office" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="orgContactDetails" type="rbt:ContactMethodType" minOccurs="0"/>
+            <xsd:element name="previousTin" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="principalBusinessAddress" type="rbt:AddressInfoType" minOccurs="0"/>
+            <xsd:element name="registrationDate" type="xsd:dateTime" minOccurs="0"/>
+            <xsd:element name="rgdNo" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="portalUserName" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="registrationStatus" type="rbt:RegStatus" minOccurs="0"/>
+            <xsd:element name="outcome" type="rbt:Outcomes" minOccurs="0"/>
+            <xsd:element name="referenceNumber" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="RegisterOrganisationResponse" type="tns:RegisterOrganisationResponse"/>
+    <xsd:complexType name="RegisterOrganisationResponse">
+        <xsd:sequence>
+            <xsd:element name="return" type="tns:OrgRegOutput" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OrgRegOutput">
+		<xsd:complexContent>
+			<xsd:extension base="bt:ServiceResponseType">
+        <xsd:sequence>
+            <xsd:element name="tin" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="referenceNumber" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+    </xsd:complexType>
+        	
+    <xsd:complexType name="TaxpayerStatusType">
+		<xsd:complexContent>
+			<xsd:extension base="bt:ServiceResponseType">
+        <xsd:sequence>
+            <xsd:element name="tin" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="taxpayerName" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="registrationStatus" type="rbt:RegStatus" minOccurs="0"/>
+        </xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+    </xsd:complexType>
+			
+	
+</xsd:schema>

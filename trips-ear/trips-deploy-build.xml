@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<project default="all" basedir="." xmlns:oracle="antlib:oracle"
+         xmlns="antlib:org.apache.tools.ant">
+  <property file="build.properties"/>
+  <target name="init">
+    <tstamp/>
+  </target>
+  <target name="remove-shared-library" >
+    <oracle:removeSharedLibrary deployeruri="${oc4j.deployer.uri}"
+                                libraryname="${sharedlib.name}"
+                                password="${oc4j.admin.password}"
+                                userid="${oc4j.admin.user}"
+                                libraryversion="1.0"/>
+  </target>
+  <target name="linux-publish-shared-library" depends="init">
+    <echo message="-----> Publishing shared library"></echo>
+    <oracle:publishSharedLibrary deployeruri="${oc4j.deployer.uri}"
+                                 userid="${oc4j.admin.user}"
+                                 password="${oc4j.admin.password}"
+                                 libraryname="${sharedlib.name}"
+                                 libraryversion="1.0">
+      <!--
+$BPEL_HOME/bpel/system/appserver/oc4j/webservices/lib/orasaaj.jar
+
+$BPEL_HOME/bpel/system/appserver/oc4j/webservices/lib/soap.jar
+
+$BPEL_HOME/bpel/system/services/config
+
+$BPEL_HOME/bpel/system/services/lib/bpm-services.jar
+
+$BPEL_HOME/bpel/system/services/schema
+-->     
+    <oracle:uploadCodeSource path="${project.dir}/trips-ear/log4j.jar" />
+    <oracle:uploadCodeSource path="${project.dir}/trips-ear/cube-i18n.jar" />
+     <oracle:uploadCodeSource path="${project.dir}/trips-ear/commons-logging.jar" />
+      <oracle:addCodeSource path="/dataarea1/home/oracle/product/SOA/integration/esb/lib/bpm-infra.jar"/>
+      <oracle:addCodeSource path="/dataarea1/home/oracle/product/SOA/bpel/lib/orabpel-common.jar"/>
+      <oracle:addCodeSource path="/dataarea1/home/oracle/product/SOA/bpel/lib/orabpel-thirdparty.jar"/>
+      <oracle:addCodeSource path="/dataarea1/home/oracle/product/SOA/bpel/lib/orabpel.jar"/>
+      <oracle:addCodeSource path="/dataarea1/home/oracle/product/SOA/j2ee/home/jazncore.jar"/>
+      <oracle:addCodeSource path="/dataarea1/home/oracle/product/SOA/j2ee/home/oc4jclient.jar"/>
+      <oracle:addCodeSource path="/dataarea1/home/oracle/product/SOA/lib/xml.jar"/>
+      <oracle:addCodeSource path="/dataarea1/home/oracle/product/SOA/lib/xmlparserv2.jar"/>
+      <oracle:addCodeSource path="/dataarea1/home/oracle/product/SOA/integration/esb/lib/bpm-services.jar"/>
+      <oracle:addCodeSource path="/dataarea1/home/oracle/product/SOA/bpel/lib/orabpel-ant.jar"/>
+      <oracle:addCodeSource path="/dataarea1/home/oracle/product/SOA/rules/lib/rl.jar"/>
+       <oracle:addCodeSource path="/dataarea1/home/oracle/product/SOA/rules/lib/rulesdk.jar"/>
+    </oracle:publishSharedLibrary>
+  </target>
+  
+    <target name="windows-publish-shared-library" depends="init">
+    <echo message="-----> Publishing shared library"></echo>
+    <oracle:publishSharedLibrary deployeruri="${oc4j.deployer.uri}"
+                                 userid="${oc4j.admin.user}"
+                                 password="${oc4j.admin.password}"
+                                 libraryname="${sharedlib.name}"
+                                 libraryversion="1.0">
+      <!--
+$BPEL_HOME/bpel/system/appserver/oc4j/webservices/lib/orasaaj.jar
+
+$BPEL_HOME/bpel/system/appserver/oc4j/webservices/lib/soap.jar
+
+$BPEL_HOME/bpel/system/services/config
+
+$BPEL_HOME/bpel/system/services/lib/bpm-services.jar
+
+$BPEL_HOME/bpel/system/services/schema
+-->     
+    <oracle:uploadCodeSource path="${project.dir}/trips-ear/log4j.jar" />
+    <oracle:uploadCodeSource path="${project.dir}/trips-ear/cube-i18n.jar" />
+     <oracle:uploadCodeSource path="${project.dir}/trips-ear/commons-logging.jar" />
+      <oracle:addCodeSource path="/integration/esb/lib/bpm-infra.jar"/>
+      <oracle:addCodeSource path="/bpel/lib/orabpel-common.jar"/>
+      <oracle:addCodeSource path="/bpel/lib/orabpel-thirdparty.jar"/>
+      <oracle:addCodeSource path="/bpel/lib/orabpel.jar"/>
+      <oracle:addCodeSource path="/j2ee/home/jazncore.jar"/>
+      <oracle:addCodeSource path="/j2ee/home/oc4jclient.jar"/>
+      <oracle:addCodeSource path="/lib/xml.jar"/>
+      <oracle:addCodeSource path="/lib/xmlparserv2.jar"/>
+      <oracle:addCodeSource path="/integration/esb/lib/bpm-services.jar"/>
+      <oracle:addCodeSource path="/bpel/lib/orabpel-ant.jar"/>
+      <oracle:addCodeSource path="/rules/lib/rl.jar"/>
+       <oracle:addCodeSource path="/rules/lib/rulesdk.jar"/>
+    </oracle:publishSharedLibrary>
+  </target>
+  <target name="stop-application" depends="deployValidate.check"
+          if="trips-ear.file.exist">
+    <echo message="-----> Stopping the application module deployment (ear) file"></echo>
+    <oracle:stop deployeruri="${oc4j.deployer.uri}" userid="${oc4j.admin.user}"
+                 password="${oc4j.admin.password}"
+                 deploymentname="${app.name}"/>
+  </target>
+  <target name="deployValidate.check">
+    <condition property="trips-ear.file.exist" value="true" else="df">
+      <and>
+        <available file="${oracle.home}/j2ee/home/applications/trips-ear.ear"/>
+      </and>
+    </condition>
+  </target>
+  <target name="ear" depends="init">
+    <echo message="-----> Building trips web-application"></echo>
+    <exec dir="${project.dir}" executable="cmd">
+      <arg line="/c mvn clean install"/>
+    </exec>
+  </target>
+  <target name="deploy" depends="ear">
+    <echo message="-----> Deploying the application module deployment (ear) file"></echo>
+    <oracle:deploy deployeruri="${oc4j.deployer.uri}"
+                   userid="${oc4j.admin.user}" password="${oc4j.admin.password}"
+                   file="${basedir}\target\${app.name}.ear"
+                   deploymentname="${app.name}"
+                   bindallwebapps="${oc4j.binding.module}"/>
+  </target>
+  <target name="start-application" depends="stop-application">
+    <oracle:start deployeruri="${oc4j.deployer.uri}" userid="${oc4j.admin.user}"
+                  password="${oc4j.admin.password}"
+                  deploymentname="${app.name}"/>
+  </target>
+</project>

@@ -1,0 +1,641 @@
+ <searchList>
+    <search>
+        <note>USED FOR SEARCHING COLLECTION RECORDS</note>
+        <id>FIND_BATCH_COLLECTION</id>
+        <sectionHeading>Find Collection</sectionHeading>
+        <windowHeading>TRIPS - Find Batch</windowHeading>
+        <queryType>distinct</queryType>
+        <criteriaFields>
+          <field>
+            <fieldName>Office</fieldName>
+            <fieldType>string</fieldType>
+            <fieldLabel>Office</fieldLabel>
+            <firstItemSelected>true</firstItemSelected>
+            <columnName>DFIN_REV_COLL_BATCH.OFFICE</columnName>
+            <listId>USER_OFFICE_LIST</listId>
+            <disabled>true</disabled>
+            <isVisible>N</isVisible>
+          </field>
+          <field>
+            <fieldName>CollectionAgentType</fieldName>
+            <fieldType>string</fieldType>
+            <fieldLabel>Collection Agent Type</fieldLabel>
+            <columnName>REF_REV_COLLECTION_AGENT.AGENT_TYPE</columnName>
+            <listId>COLLECTION_AGENT_TYPE</listId>
+          </field>
+           <field>
+            <fieldName>CollectionAgentCode</fieldName>
+            <fieldType>string</fieldType>
+            <fieldLabel>Collection Agent Code</fieldLabel>
+            <columnName>DFIN_REV_COLL_BATCH.COLLECTION_AGENT</columnName>
+          </field>
+          <field>
+            <fieldName>BatchNumber</fieldName>
+            <fieldType>string</fieldType>
+            <fieldLabel>BatchNumber</fieldLabel>
+            <columnName>DFIN_REV_COLL_BATCH.BATCH_NUMBER</columnName>
+          </field>
+          
+        </criteriaFields>
+        <resultFields>
+          <field>
+            <fieldName>ID</fieldName>
+            <fieldType>number</fieldType>
+            <columnOrderNbr>1</columnOrderNbr>
+            <columnHeading>ID</columnHeading>
+            <columnName>DFIN_REV_COLL_BATCH.ID</columnName>
+            <isIdField>Y</isIdField>
+            <isVisible>N</isVisible>
+          </field>
+          <field>
+            <fieldName>BatchNumber</fieldName>
+            <fieldType>string</fieldType>
+            <columnOrderNbr>2</columnOrderNbr>
+            <columnHeading>Batch No</columnHeading>
+            <columnName>DFIN_REV_COLL_BATCH.BATCH_NUMBER</columnName>
+          </field>
+          <field>
+            <fieldName>CollectionDate</fieldName>
+            <fieldType>date</fieldType>
+            <columnOrderNbr>3</columnOrderNbr>
+            <columnHeading>Collection Date</columnHeading>
+            <columnName>DFIN_REV_COLL_BATCH.COLLECTION_DATE</columnName>
+          </field>
+          <field>
+            <fieldName>Office</fieldName>
+            <fieldType>string</fieldType>
+            <columnOrderNbr>4</columnOrderNbr>
+            <columnHeading>Office</columnHeading>
+            <columnName>REF_OFFICE.DESCRIPTION</columnName>
+          </field>
+          <field>
+            <fieldName>AgentType</fieldName>
+            <fieldType>string</fieldType>
+            <columnOrderNbr>5</columnOrderNbr>
+            <columnHeading>Agent Type</columnHeading>
+            <columnName>REF_REV_COLL_AGENT_TYPE.DESCRIPTION</columnName>
+          </field>
+          <field>
+            <fieldName>AgentCode</fieldName>
+            <fieldType>string</fieldType>
+            <columnOrderNbr>6</columnOrderNbr>
+            <columnHeading>Agent Code</columnHeading>
+            <columnName>DFIN_REV_COLL_BATCH.COLLECTION_AGENT</columnName>
+          </field>
+          <field>
+            <fieldName>AgentName</fieldName>
+            <fieldType>string</fieldType>
+            <columnOrderNbr>7</columnOrderNbr>
+            <columnHeading>Agent Name</columnHeading>
+            <columnName>REF_REV_COLLECTION_AGENT.AGENT_NAME</columnName>
+          </field>          
+            <field>
+            <fieldName>BatchStatus</fieldName>
+            <fieldType>string</fieldType>
+            <columnOrderNbr>8</columnOrderNbr>
+            <columnHeading>Batch Status</columnHeading>
+            <columnName>DFIN_REV_COLL_BATCH.BATCH_STATUS</columnName>
+          </field>
+        </resultFields>
+        <searchTables>
+          <table>
+            <name>DFIN_REV_COLL_BATCH</name>
+          </table>
+          <table>
+            <name>DFIN_REV_COLL_RECEIPT</name>
+          </table>
+          <table>
+            <name>REF_REV_COLLECTION_AGENT</name>
+          </table>
+          <table>
+            <name>REF_OFFICE</name>
+          </table>
+          <table>
+            <name>REF_REV_COLL_AGENT_TYPE</name>
+          </table>
+          <table>
+            <name>DDOC_DOCUMENT</name>
+          </table>
+        </searchTables>
+        <joinQuery>DFIN_REV_COLL_BATCH.ID = DFIN_REV_COLL_RECEIPT.REV_COLL_BATCH
+                   and DFIN_REV_COLL_RECEIPT.ID = DDOC_DOCUMENT.ID
+                   and DFIN_REV_COLL_BATCH.OFFICE = REF_OFFICE.CODE
+                   and DFIN_REV_COLL_BATCH.COLLECTION_AGENT =REF_REV_COLLECTION_AGENT.CODE
+                   and REF_REV_COLLECTION_AGENT.AGENT_TYPE = REF_REV_COLL_AGENT_TYPE.CODE
+                   and DFIN_REV_COLL_BATCH.BATCH_STATUS != 'SUB'
+        </joinQuery>
+        <actions>
+          <action>
+            <actionId>view</actionId>
+            <actionLabel>View</actionLabel>
+            <actionCallBack>view</actionCallBack>
+            <allowableModes>viewMode</allowableModes>
+          </action>
+          <action>
+            <actionId>edit</actionId>
+            <actionLabel>Edit</actionLabel>
+            <actionCallBack>edit</actionCallBack>
+            <allowableModes>editMode</allowableModes>
+          </action>
+        </actions>
+      </search>
+       <search>
+    <id>FIND_PAYMENT</id>
+    <sectionHeading>Find Payment</sectionHeading>
+    <windowHeading>Find Payment</windowHeading>
+    <queryType>distinct</queryType>
+    <criteriaFields>
+      <field>
+        <fieldName>tin</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Tin</fieldLabel>
+        <columnName>TAXPAYER_IDENTIFIER_VIEW.TIN</columnName>
+      </field>
+        <field>
+        <fieldName>branch</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Branch</fieldLabel>
+        <columnName>TAXPAYER_IDENTIFIER_VIEW.BRANCH_NO</columnName>
+      </field>
+      <field>
+        <fieldName>revenueType</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Revenue Type</fieldLabel>
+        <columnName>DFIN_REV_COLL_SPREAD.TAX_TYPE</columnName>
+        <listId>TAX_TYPE</listId>
+      </field>      
+      <field>
+        <fieldName>returnPeriod</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Return Period</fieldLabel>
+        <columnName>REVLED_REV_PERIOD.PERIOD_END</columnName>
+        <operator>=</operator>
+      </field>
+      <field>
+        <fieldName>receiptNumber</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Receipt Number</fieldLabel>
+        <columnName>DFIN_REV_COLL_RECEIPT.RECEIPT_NUMBER</columnName>
+      </field>
+      <field>
+        <fieldName>startDate</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Receipt Date from</fieldLabel>
+        <columnName>DFIN_REV_COLL_RECEIPT.PAYMENT_DATE</columnName>
+        <operator>&gt;=</operator>
+      </field>
+      <field>
+        <fieldName>endDate</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Receipt Date to</fieldLabel>
+        <columnName>DFIN_REV_COLL_RECEIPT.PAYMENT_DATE</columnName>
+        <operator>&lt;=</operator>
+      </field>
+      <field>
+        <fieldName>batchNumber</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Batch Number</fieldLabel>
+        <columnName>DFIN_REV_COLL_BATCH.BATCH_NUMBER</columnName>
+      </field>
+      <field>
+        <fieldName>office</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Office</fieldLabel>
+        <firstItemSelected>true</firstItemSelected>
+        <columnName>REV_ACC.REF_OFFICE</columnName>
+        <listId>USER_OFFICE_LIST</listId>
+        <disabled>true</disabled>
+        <isVisible>N</isVisible>
+      </field>
+    </criteriaFields>
+    <resultFields>
+      <field>
+        <fieldName>ID</fieldName>
+        <fieldType>string</fieldType>
+        <columnOrderNbr>100</columnOrderNbr>
+        <columnHeading>ID</columnHeading>
+        <columnName>DFIN_REV_COLL_RECEIPT.ID</columnName>
+        <isIdField>Y</isIdField>
+        <isVisible>N</isVisible>
+      </field>
+       <field>
+        <fieldName>ACCT_NO</fieldName>
+        <columnOrderNbr>101</columnOrderNbr>
+        <columnHeading>TIN</columnHeading>
+        <columnName>REV_ACC.ACCT_NO</columnName>
+        <isVisible>N</isVisible>
+      </field>
+      <field>
+        <fieldName>TIN</fieldName>
+        <fieldType>tinformat</fieldType>
+        <columnOrderNbr>2</columnOrderNbr>
+        <columnHeading>TIN</columnHeading>
+        <columnName>REV_ACC.ACCT_NO</columnName>
+      </field>
+      <field>
+        <fieldName>RECEIPT_NO</fieldName>
+        <fieldType>string</fieldType>
+        <columnOrderNbr>5</columnOrderNbr>
+        <columnHeading>Receipt No</columnHeading>
+        <columnName>DFIN_REV_COLL_RECEIPT.RECEIPT_NUMBER</columnName>
+      </field>
+      <field>
+        <fieldName>PAYMENT_DATE</fieldName>
+        <fieldType>date</fieldType>
+        <columnOrderNbr>6</columnOrderNbr>
+        <columnHeading>Payment Date</columnHeading>
+        <columnName>DFIN_REV_COLL_RECEIPT.PAYMENT_DATE</columnName>
+      </field>
+      <field>
+        <fieldName>AMOUNT</fieldName>
+        <fieldType>decimal</fieldType>
+        <columnOrderNbr>8</columnOrderNbr>
+        <columnHeading>Amount</columnHeading>
+        <columnName>DFIN_REV_COLL_RECEIPT.PAYMENT_AMOUNT</columnName>
+        <decimalLength>2</decimalLength>
+        <putThousandSeparator>true</putThousandSeparator>
+      </field>
+    </resultFields>
+    <searchTables>
+      <table>
+        <name>DFIN_REV_COLL_RECEIPT left outer join DFIN_REV_COLL_BATCH on DFIN_REV_COLL_RECEIPT.REV_COLL_BATCH = DFIN_REV_COLL_BATCH.ID</name>
+      </table>  
+      <table>
+        <name>REV_ACC</name>
+      </table>
+        <table>
+        <name>DDOC_DOCUMENT</name>
+      </table>
+      <table>
+        <name>DFIN_REV_COLL_INSTRUMENT</name>
+      </table>
+      <table>
+        <name>DFIN_REV_COLL_SPREAD</name>
+      </table>
+       <table>
+        <name>TAXPAYER_IDENTIFIER_VIEW</name>
+      </table>
+       <table>
+        <name>REVLED_REV_PERIOD</name>
+      </table>      
+    </searchTables>
+    <joinQuery>
+        DFIN_REV_COLL_RECEIPT.ID = DDOC_DOCUMENT.ID AND
+        REV_ACC.id = DDOC_DOCUMENT.REV_ACC AND
+        TAXPAYER_IDENTIFIER_VIEW.ent_entity = REV_ACC.ent_entity AND
+        DFIN_REV_COLL_RECEIPT.ID = DFIN_REV_COLL_INSTRUMENT.RECEIPT AND
+	DFIN_REV_COLL_INSTRUMENT.ID = DFIN_REV_COLL_SPREAD.INSTRUMENT AND
+        DFIN_REV_COLL_SPREAD.PERIOD = REVLED_REV_PERIOD.ID
+    </joinQuery>
+     <dynamicQueryInjections>
+      <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_PAYMENTS_TO_RESOLVE</withValue>
+        <where>(DFIN_REV_COLL_RECEIPT.DOC_STATUS = 'SER')
+        </where>
+      </dynamicQueryInjection>
+      </dynamicQueryInjections>
+    <actions>
+      <action>
+        <actionId>add</actionId>
+        <actionLabel>Add</actionLabel>
+        <actionCallBack>add</actionCallBack>
+         <allowableModes>addMode</allowableModes>
+      </action>
+      <action>
+        <actionId>edit</actionId>
+        <actionLabel>Continue</actionLabel>
+        <actionCallBack>edit</actionCallBack>
+         <allowableModes>editMode</allowableModes>
+      </action>
+      <action>
+        <actionId>view</actionId>
+        <actionLabel>View</actionLabel>
+        <actionCallBack>view</actionCallBack>
+        <allowableModes>viewMode</allowableModes>
+      </action>
+    </actions>
+  </search>
+   <search>
+    <id>FIND_PAYMENT_REVERSAL</id>
+    <sectionHeading>Find Payment for reversal</sectionHeading>
+    <windowHeading>Find Payment for reversal</windowHeading>
+    <queryType>distinct</queryType>
+     <criteriaFields>
+      <field>
+        <fieldName>tin</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Tin</fieldLabel>
+        <columnName>TAXPAYER_IDENTIFIER_VIEW.TIN</columnName>
+      </field>
+        <field>
+        <fieldName>branch</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Branch</fieldLabel>
+        <columnName>TAXPAYER_IDENTIFIER_VIEW.BRANCH_NO</columnName>
+      </field>
+      <field>
+        <fieldName>revenueType</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Revenue Type</fieldLabel>
+        <columnName>DFIN_REV_COLL_SPREAD.TAX_TYPE</columnName>
+        <listId>TAX_TYPE</listId>
+      </field>      
+      <field>
+        <fieldName>returnPeriod</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Return Period</fieldLabel>
+        <columnName>REVLED_REV_PERIOD.PERIOD_END</columnName>
+        <operator>=</operator>
+      </field>
+      <field>
+        <fieldName>receiptNumber</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Receipt Number</fieldLabel>
+        <columnName>DFIN_REV_COLL_RECEIPT.RECEIPT_NUMBER</columnName>
+      </field>
+      <field>
+        <fieldName>startDate</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Receipt Date from</fieldLabel>
+        <columnName>DFIN_REV_COLL_RECEIPT.PAYMENT_DATE</columnName>
+        <operator>&gt;=</operator>
+      </field>
+      <field>
+        <fieldName>endDate</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Receipt Date to</fieldLabel>
+        <columnName>DFIN_REV_COLL_RECEIPT.PAYMENT_DATE</columnName>
+        <operator>&lt;=</operator>
+      </field>
+      <field>
+        <fieldName>batchNumber</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Batch Number</fieldLabel>
+        <columnName>DFIN_REV_COLL_BATCH.BATCH_NUMBER</columnName>
+      </field>
+      <field>
+        <fieldName>office</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Office</fieldLabel>
+        <firstItemSelected>true</firstItemSelected>
+        <columnName>REV_ACC.REF_OFFICE</columnName>
+        <listId>USER_OFFICE_LIST</listId>
+        <disabled>true</disabled>
+        <isVisible>N</isVisible>
+      </field>
+    </criteriaFields>
+    <resultFields>
+      <field>
+        <fieldName>ID</fieldName>
+        <fieldType>string</fieldType>
+        <columnOrderNbr>100</columnOrderNbr>
+        <columnHeading>ID</columnHeading>
+        <columnName>DFIN_REV_COLL_RECEIPT.ID</columnName>
+        <isIdField>Y</isIdField>
+        <isVisible>N</isVisible>
+      </field>
+       <field>
+        <fieldName>ACCT_NO</fieldName>
+        <columnOrderNbr>101</columnOrderNbr>
+        <columnHeading>TIN</columnHeading>
+        <columnName>REV_ACC.ACCT_NO</columnName>
+        <isVisible>N</isVisible>
+      </field>
+      <field>
+        <fieldName>TIN</fieldName>
+        <fieldType>tinformat</fieldType>
+        <columnOrderNbr>2</columnOrderNbr>
+        <columnHeading>TIN</columnHeading>
+        <columnName>TAXPAYER_IDENTIFIER_VIEW.TIN</columnName>
+      </field>
+      <field>
+        <fieldName>RECEIPT_NO</fieldName>
+        <fieldType>string</fieldType>
+        <columnOrderNbr>5</columnOrderNbr>
+        <columnHeading>Receipt No</columnHeading>
+        <columnName>DFIN_REV_COLL_RECEIPT.RECEIPT_NUMBER</columnName>
+      </field>
+      <field>
+        <fieldName>PAYMENT_DATE</fieldName>
+        <fieldType>date</fieldType>
+        <columnOrderNbr>6</columnOrderNbr>
+        <columnHeading>Payment Date</columnHeading>
+        <columnName>DFIN_REV_COLL_RECEIPT.PAYMENT_DATE</columnName>
+      </field>
+      <field>
+        <fieldName>AMOUNT</fieldName>
+        <fieldType>decimal</fieldType>
+        <columnOrderNbr>8</columnOrderNbr>
+        <columnHeading>Amount</columnHeading>
+        <columnName>DFIN_REV_COLL_RECEIPT.PAYMENT_AMOUNT</columnName>
+        <decimalLength>2</decimalLength>
+        <putThousandSeparator>true</putThousandSeparator>
+      </field>
+    </resultFields>
+    <searchTables>
+      <table>
+        <name>DFIN_REV_COLL_RECEIPT left outer join DFIN_REV_COLL_BATCH on DFIN_REV_COLL_RECEIPT.REV_COLL_BATCH = DFIN_REV_COLL_BATCH.ID</name>
+      </table>  
+      <table>
+        <name>REV_ACC</name>
+      </table>
+        <table>
+        <name>DDOC_DOCUMENT</name>
+      </table>
+      <table>
+        <name>DFIN_REV_COLL_INSTRUMENT</name>
+      </table>
+      <table>
+        <name>DFIN_REV_COLL_SPREAD</name>
+      </table>
+       <table>
+        <name>TAXPAYER_IDENTIFIER_VIEW</name>
+      </table>
+    </searchTables>
+    <joinQuery>
+        DFIN_REV_COLL_RECEIPT.ID = DDOC_DOCUMENT.ID AND
+        REV_ACC.id = DDOC_DOCUMENT.REV_ACC AND
+        TAXPAYER_IDENTIFIER_VIEW.ent_entity = REV_ACC.ent_entity AND
+        DFIN_REV_COLL_RECEIPT.ID = DFIN_REV_COLL_INSTRUMENT.RECEIPT AND
+	DFIN_REV_COLL_INSTRUMENT.ID = DFIN_REV_COLL_SPREAD.INSTRUMENT AND
+        DDOC_DOCUMENT.DOC_STATUS != 'CAN' AND DDOC_DOCUMENT.DOC_STATUS != 'SAV'
+        AND DDOC_DOCUMENT.DOC_STATUS != 'SER'
+    </joinQuery>
+     <dynamicQueryInjections>
+      <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_PAYMENTS_TO_RESOLVE</withValue>
+        <where>(DFIN_REV_COLL_RECEIPT.DOC_STATUS = 'SER')
+        </where>
+      </dynamicQueryInjection>
+      </dynamicQueryInjections>
+    <actions>
+      <action>
+        <actionId>add</actionId>
+        <actionLabel>Add</actionLabel>
+        <actionCallBack>add</actionCallBack>
+         <allowableModes>addMode</allowableModes>
+      </action>
+      <action>
+        <actionId>edit</actionId>
+        <actionLabel>Continue</actionLabel>
+        <actionCallBack>edit</actionCallBack>
+         <allowableModes>editMode</allowableModes>
+      </action>
+      <action>
+        <actionId>view</actionId>
+        <actionLabel>View</actionLabel>
+        <actionCallBack>view</actionCallBack>
+        <allowableModes>viewMode</allowableModes>
+      </action>
+    </actions>
+  </search>
+  <search>
+    <id>FIND_SUSPEND_PAYMENT</id>
+    <sectionHeading>Find Payment to resolve</sectionHeading>
+    <windowHeading>Find Payment to resolve</windowHeading>
+    <queryType>distinct</queryType>
+     <criteriaFields>
+      <field>
+        <fieldName>revenueType</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Revenue Type</fieldLabel>
+        <columnName>DFIN_REV_COLL_SPREAD.TAX_TYPE</columnName>
+        <listId>TAX_TYPE</listId>
+      </field>      
+      <field>
+        <fieldName>returnPeriod</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Return Period</fieldLabel>
+        <columnName>REVLED_REV_PERIOD.PERIOD_END</columnName>
+        <operator>=</operator>
+      </field>
+      <field>
+        <fieldName>receiptNumber</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Receipt Number</fieldLabel>
+        <columnName>DFIN_REV_COLL_RECEIPT.RECEIPT_NUMBER</columnName>
+      </field>
+      <field>
+        <fieldName>startDate</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Receipt Date from</fieldLabel>
+        <columnName>DFIN_REV_COLL_RECEIPT.PAYMENT_DATE</columnName>
+        <operator>&gt;=</operator>
+      </field>
+      <field>
+        <fieldName>endDate</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Receipt Date to</fieldLabel>
+        <columnName>DFIN_REV_COLL_RECEIPT.PAYMENT_DATE</columnName>
+        <operator>&lt;=</operator>
+      </field>
+      <field>
+        <fieldName>batchNumber</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Batch Number</fieldLabel>
+        <columnName>DFIN_REV_COLL_BATCH.BATCH_NUMBER</columnName>
+      </field>   
+       <field>
+            <fieldName>CollectionAgentType</fieldName>
+            <fieldType>string</fieldType>
+            <fieldLabel>Collection Agent Type</fieldLabel>
+            <columnName>REF_REV_COLLECTION_AGENT.AGENT_TYPE</columnName>
+            <listId>COLLECTION_AGENT_TYPE</listId>
+          </field>
+           <field>
+            <fieldName>CollectionAgentCode</fieldName>
+            <fieldType>string</fieldType>
+            <fieldLabel>Collection Agent Code</fieldLabel>
+            <columnName>DFIN_REV_COLL_BATCH.COLLECTION_AGENT</columnName>
+          </field>
+    </criteriaFields>
+    <resultFields>
+      <field>
+        <fieldName>ID</fieldName>
+        <fieldType>string</fieldType>
+        <columnOrderNbr>100</columnOrderNbr>
+        <columnHeading>ID</columnHeading>
+        <columnName>DFIN_REV_COLL_RECEIPT.ID</columnName>
+        <isIdField>Y</isIdField>
+        <isVisible>N</isVisible>
+      </field>
+      <field>
+        <fieldName>RECEIPT_NO</fieldName>
+        <fieldType>string</fieldType>
+        <columnOrderNbr>1</columnOrderNbr>
+        <columnHeading>Receipt No</columnHeading>
+        <columnName>DFIN_REV_COLL_RECEIPT.RECEIPT_NUMBER</columnName>
+      </field>
+      <field>
+        <fieldName>PAYMENT_DATE</fieldName>
+        <fieldType>date</fieldType>
+        <columnOrderNbr>2</columnOrderNbr>
+        <columnHeading>Payment Date</columnHeading>
+        <columnName>DFIN_REV_COLL_RECEIPT.PAYMENT_DATE</columnName>
+      </field>
+      
+      <field>
+        <fieldName>AMOUNT</fieldName>
+        <fieldType>decimal</fieldType>
+        <columnOrderNbr>3</columnOrderNbr>
+        <columnHeading>Amount</columnHeading>
+        <columnName>DFIN_REV_COLL_RECEIPT.PAYMENT_AMOUNT</columnName>
+        <decimalLength>2</decimalLength>
+        <putThousandSeparator>true</putThousandSeparator>
+      </field>
+    </resultFields>
+    <searchTables>
+      <table>
+        <name>DFIN_REV_COLL_RECEIPT left outer join DFIN_REV_COLL_BATCH on DFIN_REV_COLL_RECEIPT.REV_COLL_BATCH = DFIN_REV_COLL_BATCH.ID</name>
+      </table>  
+        <table>
+        <name>DDOC_DOCUMENT</name>
+      </table>
+        <table>
+        <name>DFIN_REV_COLL_INSTRUMENT</name>
+      </table>
+      <table>
+        <name>DFIN_REV_COLL_SPREAD</name>
+      </table>
+    </searchTables>
+    <joinQuery>
+        DFIN_REV_COLL_RECEIPT.ID = DDOC_DOCUMENT.ID AND
+        DFIN_REV_COLL_RECEIPT.ID = DFIN_REV_COLL_INSTRUMENT.RECEIPT AND
+	DFIN_REV_COLL_INSTRUMENT.ID = DFIN_REV_COLL_SPREAD.INSTRUMENT AND
+        and DFIN_REV_COLL_BATCH.COLLECTION_AGENT = REF_REV_COLLECTION_AGENT.CODE
+        and REF_REV_COLLECTION_AGENT.AGENT_TYPE = REF_REV_COLL_AGENT_TYPE.CODE
+        DDOC_DOCUMENT.DOC_STATUS = 'SER'
+    </joinQuery>
+     <dynamicQueryInjections>
+      <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_PAYMENTS_TO_RESOLVE</withValue>
+        <where>(DFIN_REV_COLL_RECEIPT.DOC_STATUS = 'SER')
+        </where>
+      </dynamicQueryInjection>
+      </dynamicQueryInjections>
+    <actions>
+      <action>
+        <actionId>add</actionId>
+        <actionLabel>Add</actionLabel>
+        <actionCallBack>add</actionCallBack>
+         <allowableModes>addMode</allowableModes>
+      </action>
+      <action>
+        <actionId>edit</actionId>
+        <actionLabel>Continue</actionLabel>
+        <actionCallBack>edit</actionCallBack>
+         <allowableModes>editMode</allowableModes>
+      </action>
+      <action>
+        <actionId>view</actionId>
+        <actionLabel>View</actionLabel>
+        <actionCallBack>view</actionCallBack>
+        <allowableModes>viewMode</allowableModes>
+      </action>
+    </actions>
+  </search>
+</searchList>
+

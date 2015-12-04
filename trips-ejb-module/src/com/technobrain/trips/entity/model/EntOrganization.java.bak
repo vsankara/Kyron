@@ -1,0 +1,382 @@
+package com.crownagents.trips.entity.model;
+
+import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+
+/**
+ * TechnoBrain 2006
+ *
+ * Entity for table ENT_ORGANIZATION
+ *
+ * @since	$Date: 8/15/2009 12:08:23 AM$
+ * @version 	$Revision: 36$
+ * @author 	$Author: Howard Hill$
+ * 
+ * $Log[1]:
+ *  36   TRIPS2 etis.bir.gov.ph1.32.1.2    8/15/2009 12:08:23 AM  Howard Hill  
+ *         Merge from EntOrganization.java, Revision 1.34 
+ * $
+ */
+@Entity
+@NamedQuery(name = "EntOrganization.findAll", 
+    query = "select o from EntOrganization o")
+@Table(name = "ENT_ORGANIZATION")
+@DiscriminatorColumn(name="DTYPE")
+@DiscriminatorValue("ORGANIZATION")
+@NamedQueries(
+    @NamedQuery(
+    name="findOrganizationById",
+    query="select eo from EntOrganization eo where eo.id = ?1"
+   // hints={@QueryHint(name=TopLinkQueryHints.REFRESH, value=HintValues.TRUE)}
+    )
+)
+public class EntOrganization extends EntEntity    {
+    @Column(name="ACCOUNT_YEAR_END_DAY")
+    private String accountYearEndDay;
+    @Column(name="ACCOUNT_YEAR_END_MONTH")
+    private String accountYearEndMonth;
+    @Column(name="BUSINESS_END_DATE")
+    private Timestamp businessEndDate;
+    @Column(name="BUSINESS_START_DATE")
+    private Timestamp businessStartDate;
+    @Column(name="EXPORT_INDICATOR")
+    private String exportIndicator;
+    @Column(name="IMPORT_INDICATOR")
+    private String importIndicator;
+    @Column(name="LEGAL_NAME")
+    private String legalName;
+    @Column(name="LINE_OF_BUSINESS")
+    private String lineOfBusiness;
+    @Column(name="LINE_OF_BUSINESS2")
+    private String lineOfBusiness2;
+    @Column(name="LINE_OF_BUSINESS3")
+    private String lineOfBusiness3;
+    @Column(name="LINE_OF_BUSINESS4")
+    private String lineOfBusiness4;
+    @Column(name="LINE_OF_BUSINESS5")
+    private String lineOfBusiness5;
+    @Column(name="NON_TAX_TOVER_AT_REG")
+    private String nonTaxToverAtReg;
+    @Column(name="TAXABLE_TOVER_AT_REG")
+    private String taxableToverAtReg;
+    @Column(name="TRADING_AS")
+    private String tradingAs;
+    @Column(name="TRADING_AS2")
+    private String tradingAs2;
+    @Column(name="TRADING_AS3")
+    private String tradingAs3;
+    @Column(name="TRADING_AS4")
+    private String tradingAs4;
+    @Column(name="TRADING_AS5")
+    private String tradingAs5;
+    @Column(name="REGISTRATION_NUMBER")
+    private String registrationNumber;
+    @Column(name="VIP_INDICATOR")
+    private String vipIndicator;
+    @Column(name="LARGE_TAXPAYER_INDICATOR")
+    private String largeTaxPayerIndicator;
+    @Column(name="FREQUENT_TRANSFERED_INDICATOR")
+    private String frequentTransferedIndicator;
+    @Column(name="COMPANY_REG_NO")
+    private String companyRegNo;
+    @Column(name="PEROSNAL_TAX_NO")
+    private String personalTaxNo;
+    @Column(name="COMPANY_STATUS")
+    private String companyStatus;
+    @Column(name="LEGAL_NAME_PHONETIC")
+    private String legalNamePhonetic;
+    @Column(name="WEBSITE")
+    private String website;
+    @Column(name="BRANCH_FLAG")
+    private String branchFlag;
+    @Column(name="HQ_BRANCH_INDICATOR")
+    private String hqBranchIndicator;
+    @Column(name="PREFERENTIAL_CURRENCY")
+    private String preferentialCurrency;
+    @Column(name="COMPANY_REG_DATE")
+    private Timestamp companyRegDate;
+    @Column(name="COMPANY_TYPE")
+    private String companyType;
+    @Column(name="PURPOSE_OF_TIN")
+    private String purposeOfTin;
+
+
+    public EntOrganization() {
+    }
+
+    public String getAccountYearEndDay() {
+        return accountYearEndDay;
+    }
+
+    public void setAccountYearEndDay(String accountYearEndDay) {
+        this.accountYearEndDay = accountYearEndDay;
+    }
+
+    public String getAccountYearEndMonth() {
+        return accountYearEndMonth;
+    }
+
+    public void setAccountYearEndMonth(String accountYearEndMonth) {
+        this.accountYearEndMonth = accountYearEndMonth;
+    }
+
+    public Timestamp getBusinessEndDate() {
+        return businessEndDate;
+    }
+
+    public void setBusinessEndDate(Timestamp businessEndDate) {
+        this.businessEndDate = businessEndDate;
+    }
+
+    public Timestamp getBusinessStartDate() {
+        return businessStartDate;
+    }
+
+    public void setBusinessStartDate(Timestamp businessStartDate) {
+        this.businessStartDate = businessStartDate;
+    }
+
+    public String getExportIndicator() {
+        return exportIndicator;
+    }
+
+    public void setExportIndicator(String exportIndicator) {
+        this.exportIndicator = exportIndicator;
+    }
+
+    public String getImportIndicator() {
+        return importIndicator;
+    }
+
+    public void setImportIndicator(String importIndicator) {
+        this.importIndicator = importIndicator;
+    }
+
+    public String getLegalName() {
+        return legalName;
+    }
+
+    public void setLegalName(String legalName) {
+        this.legalName = legalName;
+    }
+
+    public String getLineOfBusiness() {
+        return lineOfBusiness;
+    }
+
+    public void setLineOfBusiness(String lineOfBusiness) {
+        this.lineOfBusiness = lineOfBusiness;
+    }
+
+    public String getLineOfBusiness2() {
+        return lineOfBusiness2;
+    }
+
+    public void setLineOfBusiness2(String lineOfBusiness2) {
+        this.lineOfBusiness2 = lineOfBusiness2;
+    }
+
+    public String getLineOfBusiness3() {
+        return lineOfBusiness3;
+    }
+
+    public void setLineOfBusiness3(String lineOfBusiness3) {
+        this.lineOfBusiness3 = lineOfBusiness3;
+    }
+
+    public String getNonTaxToverAtReg() {
+        return nonTaxToverAtReg;
+    }
+
+    public void setNonTaxToverAtReg(String nonTaxToverAtReg) {
+        this.nonTaxToverAtReg = nonTaxToverAtReg;
+    }
+
+    public String getTaxableToverAtReg() {
+        return taxableToverAtReg;
+    }
+
+    public void setTaxableToverAtReg(String taxableToverAtReg) {
+        this.taxableToverAtReg = taxableToverAtReg;
+    }
+
+    public String getTradingAs() {
+        return tradingAs;
+    }
+
+    public void setTradingAs(String tradingAs) {
+        this.tradingAs = tradingAs;
+    }
+
+    public String getTradingAs2() {
+        return tradingAs2;
+    }
+
+    public void setTradingAs2(String tradingAs2) {
+        this.tradingAs2 = tradingAs2;
+    }
+
+    public String getTradingAs3() {
+        return tradingAs3;
+    }
+
+    public void setTradingAs3(String tradingAs3) {
+        this.tradingAs3 = tradingAs3;
+    }
+
+    public String getTradingAs4() {
+        return tradingAs4;
+    }
+
+    public void setTradingAs4(String tradingAs4) {
+        this.tradingAs4 = tradingAs4;
+    }
+
+    public String getTradingAs5() {
+        return tradingAs5;
+    }
+
+    public void setTradingAs5(String tradingAs5) {
+        this.tradingAs5 = tradingAs5;
+    }
+
+    public String getVipIndicator() {
+        return vipIndicator;
+    }
+
+    public void setVipIndicator(String vipIndicator) {
+        this.vipIndicator = vipIndicator;
+    }      
+
+    public void setCompanyRegNo(String companyRegNo) {
+        this.companyRegNo = companyRegNo;
+    }
+
+    public String getCompanyRegNo() {
+        return companyRegNo;
+    }
+
+    public void setPersonalTaxNo(String personalTaxNo) {
+        this.personalTaxNo = personalTaxNo;
+    }
+
+    public String getPersonalTaxNo() {
+        return personalTaxNo;
+    }
+
+    public void setCompanyStatus(String companyStatus) {
+        this.companyStatus = companyStatus;
+    }
+
+    public String getCompanyStatus() {
+        return companyStatus;
+    }
+
+    public void setLegalNamePhonetic(String legalNamePhonetic) {
+        this.legalNamePhonetic = legalNamePhonetic;
+    }
+
+    public String getLegalNamePhonetic() {
+        return legalNamePhonetic;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setBranchFlag(String branchFlag) {
+        this.branchFlag = branchFlag;
+    }
+
+    public String getBranchFlag() {
+        return branchFlag;
+    }
+
+    public void setHqBranchIndicator(String hqBranchIndicator) {
+        this.hqBranchIndicator = hqBranchIndicator;
+    }
+
+    public String getHqBranchIndicator() {
+        return hqBranchIndicator;
+    }
+
+    public void setPreferentialCurrency(String preferentialCurrency) {
+        this.preferentialCurrency = preferentialCurrency;
+    }
+
+    public String getPreferentialCurrency() {
+        return preferentialCurrency;
+    }
+
+    public void setCompanyRegDate(Timestamp companyRegDate) {
+        this.companyRegDate = companyRegDate;
+    }
+
+    public Timestamp getCompanyRegDate() {
+        return companyRegDate;
+    }
+
+    public void setCompanyType(String companyType) {
+        this.companyType = companyType;
+    }
+
+    public String getCompanyType() {
+        return companyType;
+    }
+
+    public void setLineOfBusiness4(String lineOfBusiness4) {
+        this.lineOfBusiness4 = lineOfBusiness4;
+    }
+
+    public String getLineOfBusiness4() {
+        return lineOfBusiness4;
+    }
+
+    public void setLineOfBusiness5(String lineOfBusiness5) {
+        this.lineOfBusiness5 = lineOfBusiness5;
+    }
+
+    public String getLineOfBusiness5() {
+        return lineOfBusiness5;
+    }
+
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
+    }
+
+    public String getRegistrationNumber() {
+        return registrationNumber;
+    }
+
+    public String getLargeTaxPayerIndicator() {
+        return largeTaxPayerIndicator;
+    }
+
+    public void setFrequentTransferedIndicator(String frequentTransferedIndicator) {
+        this.frequentTransferedIndicator = frequentTransferedIndicator;
+    }
+
+    public String getFrequentTransferedIndicator() {
+        return frequentTransferedIndicator;
+    }
+
+    public void setPurposeOfTin(String purposeOfTin) {
+        this.purposeOfTin = purposeOfTin;
+    }
+
+    public String getPurposeOfTin() {
+        return purposeOfTin;
+    }
+}

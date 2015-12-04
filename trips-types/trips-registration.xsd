@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema targetNamespace="http://trips.technobrain.com/registration/message" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://trips.technobrain.com/registration/message" xmlns:core="http://trips.technobrain.com/core/message"
+xmlns:application="http://trips.technobrain.com/application/message">
+	<xsd:import namespace="http://trips.technobrain.com/core/message" schemaLocation="trips-core.xsd"/>
+        <xsd:import namespace="http://trips.technobrain.com/application/message" schemaLocation="trips-application.xsd"/>
+		
+	<xsd:element name="EntityOutputType" type="EntityOutputType"/>
+	<xsd:complexType name="EntityOutputType">
+		<xsd:complexContent>
+			<xsd:extension base="core:OutputType">
+				<xsd:sequence>
+					<xsd:element name="EntityID" type="xsd:long" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="AccountOutputType" type="AccountOutputType"/>
+	<xsd:complexType name="AccountOutputType">
+		<xsd:complexContent>
+			<xsd:extension base="core:OutputType">
+				<xsd:sequence>
+					<xsd:element name="AccountID" type="xsd:long" minOccurs="0" maxOccurs="1"/>
+					<xsd:element name="AccountNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+					<xsd:element name="EffectiveDateRegistration" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:element name="OrganisationTaxpayerInputType" type="OrganisationTaxpayerInputType"/>
+	<xsd:complexType name="OrganisationTaxpayerInputType">
+		<xsd:complexContent>
+			<xsd:extension base="core:InputType">
+				<xsd:sequence>
+					<xsd:element name="EntityClassification" type="core:EntityClassificationType" minOccurs="0" maxOccurs="unbounded"/>
+                                        <xsd:element name="OrganisationDetails" type="core:OrganisationType" minOccurs="0" maxOccurs="1"/>
+                                        <xsd:element name="Relationship" type="core:RelationshipType" minOccurs="0" maxOccurs="unbounded"/>
+                                        <xsd:element name="Subsidiaries" type="core:RelationshipType" minOccurs="0" maxOccurs="unbounded"/>
+                                        <xsd:element name="RelatedCompanies" type="core:RelationshipType" minOccurs="0" maxOccurs="unbounded"/>
+                                        <xsd:element name="Partners" type="core:RelationshipType" minOccurs="0" maxOccurs="unbounded"/>
+                                        <xsd:element name="Shareholders" type="core:RelationshipType" minOccurs="0" maxOccurs="unbounded"/>
+                                        <xsd:element name="Address" type="core:AddressType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="Attachment" type="core:AttachmentType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="Contact" type="core:RelationshipType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="ContactMethod" type="core:ContactMethodType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="Director" type="core:RelationshipType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="DocumentHeader" type="core:DocumentHeaderType" minOccurs="0" maxOccurs="1"/>
+					<xsd:element name="EntityAccount" type="core:EntityAccountType" minOccurs="0"/>
+					<xsd:element name="Identification" type="core:IdentificationType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="OrganisationNotes" type="core:NoteType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="RegimeAccount" type="core:RegimeAccountType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="CardDetails" type="core:CardDetailsInputType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="BankDetails" type="core:BankDetailsInputType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="UpdateReason" type="ReasonHistoryInputType" minOccurs="0" maxOccurs="1"/>
+					<xsd:element name="Industry" type="core:EntityIndustryOccupationType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="OperationType" type="xsd:string" minOccurs="0" maxOccurs="1"/>                     
+					<xsd:element name="SiteDetails" type="core:EntitySiteType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="Property" type="core:PropertyInputType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="EntityApplication" type="application:EntityAppInputType" minOccurs="0" maxOccurs="1"/>
+					<xsd:element name="RevenueTypeApplications" type="application:RevenueTypeAppInputType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="BusinessSector" type="core:BusinessSectorInputType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="TradingAsDetails" type="core:TradingAsInputType" minOccurs="0" maxOccurs="unbounded"/>
+                                        <xsd:element name="CommercialVehicleDetails" type="core:CommercialVehicalDetailsInputType" minOccurs="0" maxOccurs="unbounded"/>
+                                        <xsd:element name="OperationSubmittedFrom" type="xsd:string" minOccurs="0" maxOccurs="1"/> 
+                                        <xsd:element name="ApprovalRequired" type="xsd:boolean" minOccurs="0" maxOccurs="1"/> 
+                                        <xsd:element name="Origin" type="xsd:string" minOccurs="0" maxOccurs="1"/> 
+                         	</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+        <xsd:element name="ReasonHistoryInputType" type="ReasonHistoryInputType"/>
+	<xsd:complexType name="ReasonHistoryInputType">
+		<xsd:complexContent>
+			<xsd:extension base="core:InputType">
+				<xsd:sequence>
+                                        <xsd:element name="Reason" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                                        <xsd:element name="Notes" type="xsd:string" minOccurs="0"  maxOccurs="1"/> 				
+                                </xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+       
+</xsd:schema>

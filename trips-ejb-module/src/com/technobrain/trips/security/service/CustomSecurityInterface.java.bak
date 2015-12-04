@@ -1,0 +1,83 @@
+package com.crownagents.trips.security.service;
+
+import com.crownagents.trips.identity.model.CasRole;
+import com.crownagents.trips.identity.model.CasUser;
+import com.crownagents.trips.identity.model.UserType;
+
+import com.crownagents.trips.reference.model.RefPermissionRole;
+
+import java.util.List;
+
+
+/**
+ * TechnoBrain 2008
+ *
+ * Security Contract
+ * 
+ * @since	$Date: 7/14/2009 4:29:12 PM$
+ * @version 	$Revision: 9$
+ * @author 	$Author: Howard Hill$
+ * 
+ * $Log[1]:
+ *  9    TRIPS2    1.8         7/14/2009 4:29:12 PM   Howard Hill     removed
+ *       the object not found exception
+ * $
+ */
+public interface CustomSecurityInterface {
+
+    public CasUser createUser(CasUser user);
+
+    public CasUser assignMenuRolesForUser(CasUser casUser, 
+                                          String[] selectedMenuItems);
+
+    public List<CasRole> findAllMenuRoles();
+
+    public List<CasRole> findAllGroupRoles();
+
+    public CasUser findCasUser(CasUser casUser);
+
+    public CasUser assignGroupRolesForUser(CasUser user, 
+                                           String[] selectedGroupItems);
+
+
+    public List<CasUser> findAllUsers(UserType userType);
+
+    public CasUser updateUser(CasUser casUser);
+
+    public boolean changePassword(CasUser casUser, String oldPassword, 
+                               String newPassword, boolean isAdministrator);
+
+    public CasRole assignMenuRolesToGroup(CasRole role, 
+                                          String[] selectedMenuItems);
+
+    public CasRole findGroup(CasRole group) ;
+
+    public CasRole createGroup(CasRole casRole);
+
+    public CasRole updateGroup(CasRole casRole);
+
+    public List<CasRole> findGroupMembership(CasRole casRole);
+
+    public void assignGroupToBeMemberOf(CasRole casRole, 
+                                           String[] selectedMemberGroupItems);
+    
+    public CasUser saveFunctionalRolesForUser(CasUser casUser, 
+                                            String[] selectedFunctionalRoles);
+
+    public List<String> findUsersInGroup(CasRole casRole);
+
+    public List<CasRole> searchGroup(CasRole searchAbleGroup);
+
+    public List<CasUser> searchUser(CasUser searchAbleUser);
+
+    public String getPassword(String username);
+    
+    public List<CasRole> findFunctionalRolesOfUser(CasUser casUser);
+    
+    public List<CasUser> findUsersOfFunctionalRole(String functionalRole);
+
+    public List<RefPermissionRole> findAllPermissionRoles(String permissionCatgeory) ;
+
+    public CasRole assignPermissionRolesToGroup(CasRole group, 
+                                                String[] selectedPermissionItems);
+}

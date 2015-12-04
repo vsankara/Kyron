@@ -1,0 +1,279 @@
+package com.crownagents.trips.assembler;
+
+import com.crownagents.trips.core.model.BaseRefModelObject;
+import com.crownagents.trips.freezone.model.RefFreezoneControlType;
+import com.crownagents.trips.message.model.MsgType;
+import com.crownagents.trips.reference.model.*;
+import com.crownagents.trips.workflow.model.WfWorkflowCondition;
+
+import java.io.Serializable;
+
+
+/**
+ * @ Crown Agents
+ * 
+ * @since	$Date: 12/2/2009 10:58:03 PM$
+ * @version 	$Revision: 39$
+ * @author 	$Author: Howard Hill$
+ * 
+ * $Log[1]:
+ *  39   TRIPS2 etis.bir.gov.ph1.31.1.6    12/2/2009 10:58:03 PM  Howard Hill  
+ *         part 1 of flexi form merge
+ * $
+ */
+public enum DataReference implements Serializable{
+    AIRCRAFT_STATUS(RefAircraftStatus.class),
+    AIRCRAFT_TYPE(RefAircraftType.class),
+    AIRLINE(RefAirline.class),
+    AIRLINE_STATUS(RefAirlineStatus.class),
+    ANALYST(RefAnalyst.class),
+    APPLICATION_INDICATOR(RefApplicationIndicator.class),
+    APPLICATION_ROLE(RefApplicationRole.class),
+    APPLICATION_ROLE_TYPE(RefApplicationRoleType.class),
+    APPLICATION_TYPE(RefApplicationType.class),
+    ASSESSMENT_TYPE(RefAssessmentType.class),
+    AUTHORISATION_TYPE(RefAuthorisationType.class),
+    BUSINESS_SECTOR(RefBusinessSector.class),
+    CARD_TYPE(RefCardType.class),
+    CASE_STATUS(RefCaseStatus.class),
+    TRIPS_MODULE_NAME(RefTripsModuleName.class),
+    CASE_TYPE(RefCaseType.class),
+    CHEMICAL_NAME(RefChemicalName.class),
+    COLOURS(RefColours.class),
+    CHOICES(RefChoice.class),
+    COM_CODE(RefComCode.class),
+    COM_PROCEDURE(RefComProcedure.class),
+    COM_PT_PURPOSE(RefComPtPurpose.class),
+    COM_PT_TYPE(RefComPtType.class),
+    CONTAINER_TYPE(RefContainerType.class),
+    CONTAINER_STATUS(RefContainerStatus.class),
+    CONT_MEASUREMENTS(RefContMeasurements.class),
+    COMPUTATION_TYPE(RefComputationType.class),
+    COMPUTATION_METHOD(RefComputationMethod.class),
+    COMPLIANCE_TYPE(RefComplianceType.class),
+    COMPLIANCE_ACTION_TYPE(RefComplianceActionType.class),
+    COMPANY_TYPE(RefCompanyType.class),
+    COMMUNITY_CODE(RefCommunityCode.class),
+    COMMERCIAL_ACCOUNTS(RefCommercialAccounts.class),
+    COUNTRY(RefCountry.class, "nationality"),
+    CUSTOMS_PROC_CODE(RefCustomsProcCode.class),
+    CUSTOMS_AUDIT_TYPE(RefCustomsAuditType.class),
+    CUST_TRAN_TYPE(RefCustTranType.class),
+    CUST_TRAN_MODE(RefCustTranMode.class),
+    CUST_TAX_TYPE(RefCustTaxType.class),
+    CUST_PROGRESS(RefCustProgress.class),
+    CUST_PROCEDURE_TYPE(RefCustProcedureType.class),
+    CUST_LOCATION(RefCustLocation.class),
+    CUST_DOC_TYPE(RefCustDocType.class),
+    CUST_CONTROL_POINT(RefCustControlPoint.class),
+    CUST_AUTH_DOC_TYPE(RefCustAuthDocType.class),
+    CURRENCY(RefCurrency.class),
+    COURT_PROCED_TYPE(RefCourtProcedType.class),
+    CUSTOMS_REGIME(RefCustomsRegime.class),
+    DATA_SOURCE(RefDataSource.class),
+    DEBT_ACTION_TYPE(RefDebtActionType.class),
+    DEBT_CATEGORY(RefDebtCategory.class),
+    DEBT_PRIORITY_TYPES(RefDebtPriorityTypes.class),
+    DEFERMENT_PERIOD(RefDefermentPeriod.class),
+    DEFERMENT_REASON(RefDefermentReason.class),
+    DELIVERY_TERMS(RefDeliveryTerms.class),
+    DETECTION_METHOD(RefDetectionMethod.class),
+    DOC_CATEGORY(RefDocCategory.class),
+    DOC_DELIVERY_TYPE(RefDocDeliveryType.class),
+    DOC_DESTINATION_FORMAT(RefDocDestinationFormat.class),
+    DOC_DESTINATION_TYPE(RefDocDestinationType.class),
+    DOC_REPORT(RefDocReport.class),
+    DOC_STATUS(RefDocStatus.class),
+    DOC_TYPE(RefDocType.class),
+    EMPLOYMENT(RefEmployment.class),
+    ENGINE_CAPACITY_UNITS(RefEngineCapacityUnits.class),
+    ENT_ATT_TYPE(RefEntAttType.class),
+    APP_ATT_TYPE(RefAppAttType.class),
+    ENT_ROLE_TYPE(RefEntRoleType.class),
+    ENT_SITE_TYPE(RefEntSiteType.class),
+    ENTITY_TYPE(RefEntityType.class),
+    EVALUATION_TYPE(RefEvaluationType.class),
+    EXEMPTION_TYPE(RefExemptionType.class),
+    FUNCTIONAL_ROLE(RefFunctionalRole.class),
+    GENDER(RefGender.class),
+    GOODS_CONDITION(RefGoodsCondition.class),
+    GOODS_IDENT_METHOD(RefGoodsIdentMethod.class),
+    GOODS_TRANSFER_METHOD(RefGoodsTransferMethod.class),
+    GUARANTEE_AMOUNT_PERC(RefGuaranteeAmountPerc.class),
+    GUARANTEE_TYPE(RefGuaranteeType.class),
+    GUARANTEE_USAGE_TYPE(RefGuaranteeUsageType.class),
+    INSP_OUTCOME(RefInspOutcome.class),
+    INSP_STATUS(RefInspStatus.class),
+    INSP_ACTION(RefInspAction.class),
+    INSP_TYPE(RefInspType.class),
+    INFORMATION_SOURCE(RefInformationSource.class),
+    INDIVIDUAL_ROLE(RefIndividualRole.class),
+    INDIVIDUAL_BUILD(RefIndividualBuild.class),
+    INCO_TERMS(RefIncoTerms.class),
+    IDENTITY_CODE(RefIdentityCode.class),
+    IDENTIFIER_TYPE(RefIdentifierType.class),
+    IDENTIFICATION_STATUS(RefIdentificationStatus.class),
+    HANDLING_OPERATIONS(RefHandlingOperations.class),
+    INST_CANCEL_REASON(RefInstCancelReason.class),
+    INST_OUTCOME(RefInstOutcome.class),
+    INTEREST_METHOD(RefInterestMethod.class),
+    INVENTORY_METHOD(RefInventoryMethod.class),
+    LEGAL_STATUS_TYPE(RefLegalStatusType.class),
+    LOCATIONS(RefLocations.class),
+    MANIFEST_CONS_STATUS(RefManifestConsStatus.class),
+    MANIFEST_CONS_TYPE(RefManifestConsType.class),
+    MANIFEST_RECONC_RES(RefManifestReconcRes.class),
+    MANIFEST_SOURCE(RefManifestSource.class),
+    MANIFEST_STATUS(RefManifestStatus.class),
+    MANIFEST_TYPE(RefManifestType.class),
+    MARITAL_STATUS(RefMaritalStatus.class),
+    MEASUREMENT(RefMeasurement.class),
+    MEASUREMENT_UNITS(RefMeasurementUnits.class),
+    MODULES(RefModules.class),
+    NOTIFICATION_METHOD(RefNotificationMethod.class),
+    OBJECTION_CATEGORY_TYPE(RefObjectionCategoryType.class),
+    OBJECTION_STATUS_TYPE(RefObjectionStatusType.class),
+    OBJECTION_TYPE(RefObjectionType.class),
+    OFFENCE_OUTCOME(RefOffenceOutcome.class),
+    OFFENCE_STATUS(RefOffenceStatus.class),
+    OFFENCE_TYPE(RefOffenceType.class),
+    OFFICE(RefOffice.class),
+    OFFICER_UNITS(RefOfficerUnits.class),
+    OFFICERS(RefOfficers.class),
+    OPERAND_TYPE(RefOperandType.class),
+    ORGANISATION_ROLE(RefOrganisationRole.class),
+    PACKAGE_TYPE(RefPackageType.class, "name"),
+    PAYMENT_METHOD(RefPaymentMethod.class),
+    PAYMENT_SPREAD(RefPaymentSpread.class),
+    PENALTY_METHOD(RefPenaltyMethod.class),
+    PORT(RefPort.class),
+    PREMISES(RefPremises.class),    
+    PROFESSION(RefProfession.class),
+    RATE_BASIS(RefRateBasis.class),
+    REASON(RefReason.class),
+    REGION(RefRegion.class),
+    REPORT_OUTPUT_TYPE(RefReportOutputType.class),
+    REPORT_PARAMETER_TYPE(RefReportParameterType.class),
+    REV_ACC_STATUS(RefRevAccStatus.class),
+    REV_MODE(RefRevMode.class),
+    REV_TYPE(RefRevType.class),
+    RISK_LEVEL(RefRiskLevel.class),
+    RISK_SCORE(RefRiskScore.class),
+    RISK_TYPE(RefRiskType.class),
+    ROLE(RefRole.class),
+    ROUTE_INDICATOR(RefRouteIndicator.class),
+    SCIENTIFIC_NAME(RefScientificName.class),
+    SEIZURE_REASONS(RefSeizureReasons.class),
+    SENSITIVE_GOODS_TYPE(RefSensitiveGoodsType.class),
+    SHIPPING_LINE(RefShippingLine.class),
+    SOURCE_RELIABILITY(RefSourceReliability.class),
+    STAGGER(RefStagger.class),
+    STAGGER_SUB(RefStaggerSub.class),
+    STATUS(RefStatus.class),
+    ACCESS_LEVEL(RefAccessLevel.class),
+    SUSP_OUTCOME(RefSuspOutcome.class),
+    SUSPECT_REASON(RefSuspectReason.class),
+    SUSPECT_STATUS(RefSuspectStatus.class),
+    SUSPICION_REASONS(RefSuspicionReasons.class),
+    SUSPICION_TYPE(RefSuspicionType.class),
+    TARRIF_HEAD_4(RefTarrifHead4.class),
+    TARRIF_HEAD_8(RefTarrifHead8.class),
+    TARRIF_NUMBER(RefTarrifNumber.class),
+    TAX_ALLOCATION_TYPE(RefTaxAllocationType.class),
+    TAX_BAND_ALLOCATION_TYPE(RefTaxBandAllocationType.class),
+    TAX_BAND_SELECTION_METHOD(RefTaxBandSelectionMethod.class),
+    TAX_CALC_SEGMENT(RefTaxCalcSegment.class),
+    TAX_CALCULATION_TYPE(RefTaxCalculationType.class),
+    TEAM(RefTeam.class),
+    TECH_EQUIPMENT(RefTechEquipment.class),
+    TEMP_REMOV_AUTH_TYPE(RefTempRemovAuthType.class),
+    TITLE(RefTitle.class),
+    TRAIN_TYPE(RefTrainType.class),
+    TRANSACTION_CLASS(RefTransactionClass.class),
+    TRANSACTION_TYPE(RefTransactionType.class),
+    TRANSPORT(RefTransport.class),
+    USER_GROUPS(RefUserGroups.class),
+    VALUATION_NETHOD(RefValuationMethod.class),
+    VALUATION_STATUS(RefValuationStatus.class),
+    VEH_ENGINE_CAPACITY(RefVehEngineCapacity.class),
+    VEH_FUEL_TYPE(RefVehFuelType.class),
+    VEH_TYPE(RefVehType.class),
+    VEH_UNIT(RefVehUnit.class),
+    VESSEL_TYPE(RefVesselType.class),
+    WAREHOUSE_AUTH_TYPE(RefWarehouseAuthType.class),
+    WAREHOUSE_TYPE(RefWarehouseType.class),
+    WF_OPERATION(RefWfOperation.class),
+    ATTRIBUTES(RefAttributes.class),
+    WF_WORKFLOW_CONDITION(WfWorkflowCondition.class),
+    MSG_TYPE(MsgType.class),
+    FREEZEONE_CONTROL_TYPE(RefFreezoneControlType.class),
+    TAX_TAXTYPE(TaxTaxType.class),
+    BATCH_JOB_PARAM(RefBatchJobParam.class),
+    FORM_TYPE(RefFormType.class),
+    ASSOCIATION_TYPE(RefAssociationType.class),
+    ASSOCIATION_LEVEL(RefAssociationLevel.class),
+    ASSOCIATION_STATUS(RefAssociationStatus.class),
+    CONTACT_METHOD_STATUS(RefContactMethodStatus.class),
+    LOCATION_STATUS(RefLocationStatus.class),
+    DISPLAY_TYPE(RefDisplayType.class),
+    SCHEMA_TYPE(RefSchemaType.class),
+    BPELS(RefBpels.class),
+    SEARCH_IDS(RefSearchIds.class),
+    FLEXIBLE_FORM_MODES(RefFlexibleFormMode.class),
+    DOCUMENTS_PROVIDED(RefDocumentsProvided.class),
+    FLEX_ATTRIBUTE_TYPE(RefFlexAttributeType.class),
+    RELATIONSHIP_STATUS(RefRelationshipStatus.class),
+    BANK_ACCOUNT_STATUS(RefBankAccountStatus.class),
+    CARD_STATUS(RefCardStatus.class),
+    LOCATION_BY_COUNTRY(RefLocationByCountry.class),
+    COVERAGE_TYPE(RefCoverageType.class),
+    DOC_CATG_LIST(RefDocCategory.class),
+    ADDRESS_TYPE(RefAddressType.class),
+    FACILITY_TYPE(RefFacilityType.class),
+    FLEXIBLE_RETURN_TYPE(RefFlexibleReturnType.class),
+    SUFFIX(RefSuffix.class),
+    PURPOSE_OF_TIN(RefPurposeOfTin.class),
+    REGIME_PROCESSES(RefRegimeProcesses.class),
+    REGIME_DECISION(RefRegimeDecision.class),
+    CONTAINER_OWNER(RefContainerOwner.class),
+    PERMISSION_CATG(RefFacilityType.class),
+	TABLE_NAMES(RefFlexibleTableName.class),
+   // DB_COLUMN_TYPES(RefDbColumnTypes.class),
+    INDUSTRIAL_CLASSIFICATION(RefIndustClassification.class),
+    OCCUPATIONAL_CLASSIFICATION(RefOccupaClassification.class),
+    COLLECTION_AGENT(RefRevCollectionAgent.class),
+    COLLECTION_AGENT_TYPE(RefRevCollAgentType.class),
+    PAYMENT_NATURE(RefPaymentNature.class),
+    TRANSACTION_STATUS(RefTransactionStatus.class);
+    
+    DataReference() {
+    }
+    
+    <T extends BaseRefModelObject> DataReference(Class<T> _dataType,String _descriptionFieldName) {
+        this.descriptionFieldName = _descriptionFieldName;
+        this.dataType = _dataType;
+    }
+    
+    /**
+     * If this constructor is used, then descriptionfieldname is assumed to be
+     * "description".
+     * @param _dataType
+     */
+    <T extends BaseRefModelObject> DataReference(Class<T> _dataType) {
+        this.dataType = _dataType;
+        this.descriptionFieldName = "description";
+    }
+    
+    Class dataType;
+    String descriptionFieldName;
+    
+    public Class getDataType(){
+        return dataType;
+    }
+    
+    public String getDescriptionFieldName(){
+        return descriptionFieldName;
+    }
+
+
+}

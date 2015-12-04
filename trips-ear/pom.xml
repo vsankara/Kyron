@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+                <groupId>com.crownagents.trips</groupId>
+                <artifactId>trips-super-pom</artifactId>
+                <version>1.2</version>
+  </parent>                                          
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.crownagents.trips</groupId>
+  <artifactId>trips-ear</artifactId>
+  <packaging>ear</packaging>
+  <version>${BUILD_NUMBER}</version>
+  <name>trips-ear</name>
+  <url>http://${host.name}/${project.name}</url>
+  <description>Tax Revenue Integration Processing System</description>
+  
+  <scm>
+    <connection>scm:starteam:isabuilder:1sabu1lder@62.164.199.84:49201/TRIPS2/DEV/Java/Projects/trips-ear</connection>
+  </scm>
+  
+  <distributionManagement>
+    <site>
+      <id>maven.apache.org</id>
+      <url>file:C:/Program Files/Apache Software
+           Foundation/Apache2.2/htdocs/${project.name}/</url>
+    </site>
+  </distributionManagement>
+  
+  <dependencies>  
+
+    <dependency>
+      <groupId>com.crownagents.trips</groupId>
+      <artifactId>trips-types</artifactId>
+      <version>${BUILD_NUMBER}</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
+      <groupId>com.crownagents.trips</groupId>
+      <artifactId>trips-common</artifactId>
+      <version>${BUILD_NUMBER}</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
+      <groupId>com.crownagents.trips</groupId>
+      <artifactId>trips-ejb-module</artifactId>
+      <version>${BUILD_NUMBER}</version>
+      <type>ejb</type>
+    </dependency>
+    <dependency>
+      <groupId>com.crownagents.trips</groupId>
+      <artifactId>trips-gui</artifactId>
+      <version>${BUILD_NUMBER}</version>
+      <type>war</type>
+    </dependency>
+	
+	<dependency>
+	  <groupId>castor</groupId>
+	  <artifactId>castor</artifactId>
+	  <version>1.2</version>
+	</dependency>
+                
+   </dependencies>
+
+                <build>
+                <directory>target</directory>
+					<outputDirectory>target/trips-ear-${BUILD_NUMBER}</outputDirectory>
+								
+					<resources>
+					  <resource>
+						<targetPath>META-INF</targetPath>
+						<directory>../trips-gui/src/META-INF/</directory>
+						<includes>
+						  <include>**/*.xml</include>
+						</includes>
+					  </resource>
+					</resources>
+                
+       </build>
+                
+
+</project>
+
+
+
+
+

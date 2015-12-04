@@ -1,0 +1,1360 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema targetNamespace="http://trips.crownagents.com/portalinterfaces/message"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://trips.crownagents.com/portalinterfaces/message"
+            xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
+            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0">
+     <xsd:annotation>
+          <xsd:appinfo>
+               <jaxb:globalBindings>
+                    <jaxb:javaType name="java.util.Calendar" xmlType="xsd:date"
+                                   parseMethod="javax.xml.bind.DatatypeConverter.parseDate"
+                                   printMethod="javax.xml.bind.DatatypeConverter.printDate"/>
+               </jaxb:globalBindings>
+          </xsd:appinfo>
+     </xsd:annotation>
+     <xsd:element name="TaxpayerRegistrationDetails"
+                  type="TaxpayerRegistrationDetails"/>
+     <xsd:element name="taxpayerAmendNameDetails"
+                  type="taxpayerAmendNameDetails"/>
+     <xsd:element name="taxpayerAmendNameDetailsOutput"
+                  type="taxpayerAmendNameDetailsOutput"/>
+     <!-- Start of Addition of AmendBusiness details response -->
+     <xsd:element name="taxpayerAmendBusinessDetails"
+                  type="taxpayerAmendBusinessDetails"/>
+     <xsd:element name="taxpayerAmendBusinessDetailsOutput"
+                  type="taxpayerAmendBusinessDetailsOutput"/>
+     <!-- End of Addition of AmendBusiness details response -->
+     <xsd:element name="taxpayerAmendPersonalDetails"
+                  type="taxpayerAmendPersonalDetails"/>
+     <xsd:element name="taxpayerAmendPersonalDetailsOutput"
+                  type="taxpayerAmendPersonalDetailsOutput"/>
+     <xsd:element name="taxpayerAmendContactDetails"
+                  type="taxpayerAmendContactDetails"/>
+     <xsd:element name="taxpayerAmendContactDetailsOutput"
+                  type="taxpayerAmendContactDetailsOutput"/>
+     <xsd:element name="taxpayerAmendRegimeAccountDetails"
+                  type="taxpayerAmendRegimeAccountDetails"/>
+     <xsd:element name="taxpayerAmendRegimeAccountDetailsOutput"
+                  type="taxpayerAmendRegimeAccountDetailsOutput"/>
+     <!-- Start of Addition of Amend Property Details -->
+     <xsd:element name="taxpayerAmendPropertyDetails"
+                  type="taxpayerAmendPropertyDetails"/>
+     <xsd:element name="taxpayerAmendPropertyDetailsOutput"
+                  type="taxpayerAmendPropertyDetailsOutput"/>
+     <!-- End of Addition of Amend Property details response -->
+     <xsd:element name="taxpayerAmendEmploymentDetails"
+                  type="taxpayerAmendEmploymentDetails"/>
+     <xsd:element name="taxpayerAmendEmploymentDetailsOutput"
+                  type="taxpayerAmendEmploymentDetailsOutput"/>
+     <xsd:element name="AmendDirectorSubsidiaryDetail"
+                  type="AmendDirectorSubsidiaryDetail"/>
+     <xsd:element name="AmendDirectorSubsidiaryDetailResponse"
+                  type="AmendDirectorSubsidiaryDetailResponse"/>
+     <xsd:element name="taxpayerAmendOrganisationName"
+                  type="taxpayerAmendOrganisationName"/>
+     <xsd:element name="taxpayerAmendOrganisationNameOutput"
+                  type="taxpayerAmendOrganisationNameOutput"/>
+     <xsd:element name="AmendAddressDetail" type="AmendAddressDetail"/>
+     <xsd:element name="AmendAddressDetailResponse"
+                  type="AmendAddressDetailResponse"/>
+     <xsd:element name="AmendBranchDetail" type="AmendBranchDetail"/>
+     <xsd:element name="AmendBranchDetailResponse"
+                  type="AmendBranchDetailResponse"/>
+     <xsd:element name="ViewAccountDetailsReq" type="ViewAccountDetailsReq"/>
+     <xsd:element name="ViewAccountDetailsRes" type="ViewAccountDetailsRes"/>
+     <xsd:element name="ViewAvailableReturnDetailsReq"
+                  type="ViewAvailableReturnDetailsReq"/>
+     <xsd:element name="ViewAvailableReturnDetailsRes"
+                  type="ViewAvailableReturnDetailsRes"/>
+     <xsd:element name="RegisterIndividualTaxpayer"
+                  type="RegisterIndividualTaxpayer"/>
+     <xsd:element name="RegisterIndividualTaxpayerRes"
+                  type="RegisterIndividualTaxpayerRes"/>
+     <xsd:element name="AddressTypeDetails" type="AddressTypeDetails"/>
+     <xsd:element name="GetReferenceData" type="GetReferenceData"/>
+     <xsd:element name="GetReferenceDataRes" type="GetReferenceDataRes"/>
+     <xsd:element name="RegisterTaxType" type="RegisterTaxType"/>
+     <xsd:element name="RegisterTaxTypeRes" type="RegisterTaxTypeRes"/>
+     <xsd:element name="DeregisterTaxType" type="DeregisterTaxType"/>
+     <xsd:element name="DeregisterTaxTypeRes" type="DeregisterTaxTypeRes"/>
+     <xsd:element name="ReactivateTaxType" type="ReactivateTaxType"/>
+     <xsd:element name="ReactivateTaxTypeRes" type="ReactivateTaxTypeRes"/>
+     <xsd:element name="SuspendTaxType" type="SuspendTaxType"/>
+     <xsd:element name="SuspendTaxTypeRes" type="SuspendTaxTypeRes"/>
+     <xsd:element name="GetPaymentReceipt" type="GetPaymentReceipt"/>
+     <xsd:element name="GetPaymentReceiptRes" type="GetPaymentReceiptRes"/>
+     <xsd:element name="ExtractInvoiceTransactionsReq"
+                  type="ExtractInvoiceTransactionsReq"/>
+     <xsd:element name="ExtractInvoiceTransactionsRes"
+                  type="ExtractInvoiceTransactionsRes"/>
+     <xsd:element name="ExtractPaymentTransactionsReq"
+                  type="ExtractPaymentTransactionsReq"/>
+     <xsd:element name="ExtractPaymentTransactionsRes"
+                  type="ExtractPaymentTransactionsRes"/>
+     <xsd:element name="ExtractTransactionsReq" type="ExtractTransactionsReq"/>
+     <xsd:element name="ExtractTransactionsRes" type="ExtractTransactionsRes"/>
+     <xsd:element name="portalFlexibleFormsDetails"
+                  type="portalFlexibleFormsDetails"/>
+     <xsd:element name="portalFlexibleFormsDetailsOutput"
+                  type="portalFlexibleFormsDetailsOutput"/>
+     <xsd:element name="portalExtractFlexibleFormMetaData"
+                  type="portalExtractFlexibleFormMetaData"/>
+     <xsd:element name="portalExtractFlexibleFormMetaDataOutput"
+                  type="portalExtractFlexibleFormMetaDataOutput"/>
+     <xsd:element name="portalRefundsDetails" type="portalRefundsDetails"/>
+     <xsd:element name="portalRefundsDetailsOutput"
+                  type="portalRefundsDetailsOutput"/>
+     <xsd:element name="portalExemptionsDetails"
+                  type="portalExemptionsDetails"/>
+     <xsd:element name="portalExemptionsDetailsOutput"
+                  type="portalExemptionsDetailsOutput"/>
+     <xsd:element name="portalPaymentSubmissionDetails"
+                  type="portalPaymentSubmissionDetails"/>
+     <xsd:element name="portalPaymentSubmissionDetailsOutput"
+                  type="portalPaymentSubmissionDetailsOutput"/>
+     <xsd:element name="portalExtractExemptionsDetails"
+                  type="portalExtractExemptionsDetails"/>
+     <xsd:element name="portalExtractExemptionsDetailsOutput"
+                  type="portalExtractExemptionsDetailsOutput"/>
+     <xsd:complexType name="portalRefundsDetails">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string"/>
+               <xsd:element name="TaxType" type="xsd:string"/>
+               <xsd:element name="DocType" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="DateReceived" type="xsd:date"/>
+               <xsd:element name="AmountClaimed" type="xsd:decimal"/>
+               <xsd:element name="Period" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="ClaimNotes" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Username" type="xsd:string"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="portalExemptionsDetails">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string"/>
+               <xsd:element name="DateSubmitted" type="xsd:date"/>
+               <xsd:element name="ExemptionCode" type="xsd:string"/>
+               <xsd:element name="PeriodFrom" type="xsd:date"/>
+               <xsd:element name="PeriodTo" type="xsd:date" minOccurs="0"/>
+               <xsd:element name="ReturnType" type="xsd:string"/>
+               <xsd:element name="TaxType" type="xsd:string"/>
+               <xsd:element name="DeclarantName" type="xsd:string"/>
+               <xsd:element name="DeclarantPosition" type="xsd:string"/>
+               <xsd:element name="IsMakingAppOnBehalfOfTaxPayer"
+                            type="xsd:boolean"/>
+               <xsd:element name="DeclarantTIN" type="xsd:string"
+                            minOccurs="0"/>
+               <!-- Attachment Details -->
+               <xsd:element name="Attachment" type="AppAttachmentType"
+                            maxOccurs="unbounded" minOccurs="0"/>
+               <!-- Qualification Details -->
+               <xsd:element name="QualificationAttributes"
+                            type="AppAttributesType" maxOccurs="unbounded"
+                            minOccurs="0"/>
+               <xsd:element name="Username" type="xsd:string"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="portalPaymentSubmissionDetails">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string"/>
+               <xsd:element name="DateOfPayment" type="xsd:date" minOccurs="1"
+                            maxOccurs="1"/>
+               <xsd:element name="PaymentAmount" type="xsd:decimal"
+                            minOccurs="1" maxOccurs="1"/>
+               <xsd:element name="NameOfPersonPayingIn" type="xsd:string"
+                            minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="Designation" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="DocumentNumber" type="xsd:string"
+                            minOccurs="1" maxOccurs="1"/>
+               <xsd:element name="ChargeType" type="xsd:string" minOccurs="1"
+                            maxOccurs="1"/>
+               <xsd:element name="AuthorisationNumber" type="xsd:string"
+                            minOccurs="1" maxOccurs="1"/>
+               <xsd:element name="Username" type="xsd:string"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="portalExtractExemptionsDetails">
+          <xsd:sequence>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="portalFlexibleFormsDetails">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string"/>
+               <xsd:element name="DocType" type="xsd:string"/>
+               <xsd:element name="PeriodNumber" type="xsd:int"/>
+               <xsd:element name="PeriodYear" type="xsd:int"/>
+               <xsd:element name="PeriodFromDate" type="xsd:date" minOccurs="1"
+                            maxOccurs="1"/>
+               <xsd:element name="Attachment"
+                            type="PortalFlexibleFormAttachmentType"
+                            maxOccurs="unbounded" minOccurs="0"/>
+               <xsd:element name="AdditionalFields" type="AdditionalFieldsType"
+                            minOccurs="0" maxOccurs="unbounded"/>
+               <xsd:element name="Username" type="xsd:string"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="portalExtractFlexibleFormMetaData">
+          <xsd:sequence>
+			<xsd:element name="DocType" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<!--xsd:element name="PeriodNumber" type="xsd:int"  minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="PeriodYear" type="xsd:int"  minOccurs="1" maxOccurs="1"/-->
+			<xsd:element name="PeriodFromDate" type="xsd:date" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="portalExtractFlexibleFormMetaDataOutput">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType">
+                    <xsd:sequence>
+                		<xsd:element name="FormMetaData" type="FormMetaDataType" minOccurs="0"/>
+                    </xsd:sequence>
+               </xsd:extension>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="portalFlexibleFormsDetailsOutput">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="portalRefundsDetailsOutput">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="portalExemptionsDetailsOutput">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="portalPaymentSubmissionDetailsOutput">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="portalExtractExemptionsDetailsOutput">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType">
+                    <xsd:sequence>
+					    <xsd:element name="PortalExemptionCodes" type="PortalExemptionCodesType" minOccurs="0"  maxOccurs="unbounded"/>
+
+                    </xsd:sequence>
+               </xsd:extension>
+          </xsd:complexContent>
+     </xsd:complexType>  
+
+     <xsd:element name="PortalExemptionCodesType" type="PortalExemptionCodesType"/>
+     <xsd:complexType name="PortalExemptionCodesType">
+          <xsd:sequence>
+               <xsd:element name="ExemptionType" type="xsd:string"/>
+               <xsd:element name="ExemptionTypeDesc" type="xsd:string"/>
+               <xsd:element name="ExemptionCode" type="xsd:string"/>
+               <xsd:element name="Description" type="xsd:string"/>
+               <xsd:element name="TaxType" type="xsd:string"/>
+               <xsd:element name="TaxTypeDesc" type="xsd:string"/>
+               <xsd:element name="ReturnType" type="xsd:string"/>
+               <xsd:element name="ReturnTypeDesc" type="xsd:string"/>
+               <xsd:element name="Attachment" type="AttachmentSchedule"
+                            minOccurs="0" maxOccurs="unbounded"/>
+               <xsd:element name="QualificationAttributes"
+                            type="ExemptionQualificationAttributes"
+                            minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:element name="ExemptionQualificationAttributes"
+                  type="ExemptionQualificationAttributes"/>
+     <xsd:complexType name="ExemptionQualificationAttributes">
+          <xsd:sequence>
+               <xsd:element name="AttributeName" type="xsd:string"/>
+               <xsd:element name="AttributeDescription" type="xsd:string"/>
+               <xsd:element name="AttributeDataType" type="xsd:string"/>
+               <xsd:element name="Mandatory" type="xsd:string" minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:element name="AttachmentSchedule" type="AttachmentSchedule"/>
+     <xsd:complexType name="AttachmentSchedule">
+          <xsd:sequence>
+               <xsd:element name="AttachmentName" type="xsd:string"/>
+               <xsd:element name="AttachmentDescription" type="xsd:string"/>
+               <xsd:element name="Mandatory" type="xsd:string" minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:element name="FormMetaDataType" type="FormMetaDataType"/>
+     <xsd:complexType name="FormMetaDataType">
+          <xsd:sequence>
+			<xsd:element name="DocType" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<!--xsd:element name="PeriodNumber" type="xsd:int"  minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="PeriodYear" type="xsd:int"  minOccurs="1" maxOccurs="1"/-->
+			<xsd:element name="PeriodFromDate" type="xsd:date"  minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="FlexFormPeriodType" type="xsd:string"  minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="MetaDataFields" type="MetaDataFieldsType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+     </xsd:complexType>
+     <xsd:element name="AdditionalFieldsType" type="AdditionalFieldsType"/>
+     <xsd:complexType name="AdditionalFieldsType">
+          <xsd:sequence>
+	   <xsd:element name="FieldName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="FieldValue" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="TableName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="TableColumn" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="IsPrimaryKey" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="DisplayType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="FieldType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="DecimalLength" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="FieldValueArray" type="FieldValueArrayType" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:element name="FieldValueArrayType" type="FieldValueArrayType"/>
+     <xsd:complexType name="FieldValueArrayType">
+          <xsd:sequence>
+	  <xsd:element name="AdditionalFields" type="AdditionalFieldsType" minOccurs="0" maxOccurs="unbounded"/>
+	  <xsd:element name="BaseTable" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	  <xsd:element name="ReturnHeader" type="ReturnHeaderType" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="PageSection" minOccurs="0" maxOccurs="1"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <!--
+ <xsd:element name="ChildAdditionalFieldsType" type="ChildAdditionalFieldsType"/>
+     <xsd:complexType name="ChildAdditionalFieldsType">
+          <xsd:sequence>
+	   <xsd:element name="FieldName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="FieldValue" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="TableName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="TableColumn" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="IsPrimaryKey" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="DisplayType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="FieldType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="DecimalLength" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+          </xsd:sequence>
+     </xsd:complexType>
+-->
+     <xsd:element name="ReturnHeaderType" type="ReturnHeaderType"/>
+     <xsd:complexType name="ReturnHeaderType">
+          <xsd:sequence>
+               <!--<xsd:element name="BatchDetails" type="xsd:string" minOccurs="0" maxOccurs="1"/>-->
+   <xsd:element name="NilReturnIndicator" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+          </xsd:sequence>
+     </xsd:complexType>
+
+     <xsd:element name="MetaDataFieldsType" type="MetaDataFieldsType"/>
+     <xsd:complexType name="MetaDataFieldsType">
+          <xsd:sequence>
+   <xsd:element name="FieldName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+   <xsd:element name="FieldType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+   <xsd:element name="FieldLabel" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+   <xsd:element name="ContainerName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+   <xsd:element name="FieldValueArray" type="ExtractFieldValueArrayType" minOccurs="0" maxOccurs="1"/>
+          </xsd:sequence>
+     </xsd:complexType>
+ 
+ 
+ <xsd:element name="ExtractFieldValueArrayType" type="ExtractFieldValueArrayType"/>
+     <xsd:complexType name="ExtractFieldValueArrayType">
+          <xsd:sequence>
+	  <xsd:element name="AdditionalFields" type="ExtractChildAdditionalFieldsType" minOccurs="0" maxOccurs="unbounded"/>
+	  <xsd:element name="BaseTable" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	  <xsd:element name="ReturnHeader" type="ReturnHeaderType" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="PageSection" minOccurs="0" maxOccurs="1"/>
+          </xsd:sequence>
+     </xsd:complexType>
+ 
+
+ <xsd:element name="ExtractChildAdditionalFieldsType" type="ExtractChildAdditionalFieldsType"/>
+     <xsd:complexType name="ExtractChildAdditionalFieldsType">
+          <xsd:sequence>
+	   <xsd:element name="FieldName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="FieldType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+	   <xsd:element name="FieldLabel" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+       <xsd:element name="ContainerName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="taxpayerAmendContactDetails">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string" maxOccurs="1"/>
+               <xsd:element name="ContactMethod" type="ContactOldNewType"
+                            minOccurs="1" maxOccurs="unbounded"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="ContactOldNewType">
+          <xsd:sequence>
+               <xsd:element name="Operation" type="xsd:string" maxOccurs="1"/>
+               <xsd:element name="OldContactMethod"
+                            type="PortalContactMethodType" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="NewContactMethod"
+                            type="PortalContactMethodType" minOccurs="0"
+                            maxOccurs="1"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="taxpayerAmendContactDetailsOutput">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="PortalContactMethodType">
+          <xsd:sequence>
+               <xsd:element name="PrimaryIndicator" type="xsd:boolean"/>
+               <xsd:element name="Purpose" type="xsd:string"/>
+               <xsd:element name="DetailType" type="xsd:string"/>
+               <xsd:element name="Details" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="EffectiveDate" type="xsd:date"/>
+               <xsd:element name="ExpiryDate" type="xsd:date" minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="taxpayerAmendRegimeAccountDetails">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string" maxOccurs="1"/>
+               <xsd:element name="RegimeAccountMethod" type="RegimeAccountNewType"
+                            minOccurs="1" maxOccurs="unbounded"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="RegimeAccountNewType">
+          <xsd:sequence>
+               <xsd:element name="NewRegimeAccountMethod"
+                            type="PortalRegimeAccountMethodType"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="taxpayerAmendRegimeAccountDetailsOutput">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="PortalRegimeAccountMethodType">
+          <xsd:sequence>
+		       <xsd:element name="TaxType" type="xsd:string"/>
+               <xsd:element name="DateOfSubmission" type="xsd:date" minOccurs="0"/>
+			   <xsd:element name="EDR" type="xsd:date"/>
+			   <xsd:element name="TaxableTurnover" type="xsd:decimal" minOccurs="0"/>
+			   <xsd:element name="ForcedRegistration" type="xsd:boolean" minOccurs="0"/>
+			<!--   <xsd:element name="ReturnType" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+                           <xsd:element name="Status" type="xsd:string" minOccurs="1"/> -->
+          </xsd:sequence>
+     </xsd:complexType>
+     <!-- Start of changes for Amend Property Details -->
+     <xsd:complexType name="taxpayerAmendPropertyDetails">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string" maxOccurs="1"/>
+               <xsd:element name="PropertyMethod" type="PropertyOldNewType"
+                            minOccurs="1" maxOccurs="unbounded"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="PropertyOldNewType">
+          <xsd:sequence>
+               <xsd:element name="Operation" type="xsd:string" maxOccurs="1"/>
+               <xsd:element name="OldPropertyMethod"
+                            type="PortalPropertyMethodType" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="NewPropertyMethod"
+                            type="PortalPropertyMethodType" minOccurs="0"
+                            maxOccurs="1"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="taxpayerAmendPropertyDetailsOutput">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="PortalPropertyMethodType">
+          <xsd:sequence>
+               <xsd:element name="PropertyType" type="xsd:string"/>
+               <xsd:element name="Ownership" type="xsd:string" />
+               <xsd:element name="LandlordTin" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			   <xsd:element name="DirectionToTradersProperty" type="xsd:string" minOccurs="0" />
+			   <xsd:element name="LandlordsName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			   <xsd:element name="LandlordsAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="PropertyTypeIndicator"  type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="Address" type="AddressTypeDetails"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <!-- End of changes for Amend Property Details -->
+     <xsd:complexType name="taxpayerAmendEmploymentDetails">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string" maxOccurs="1"/>
+               <xsd:element name="EmploymentDetails" type="EmploymentOldNewType"
+                            minOccurs="1" maxOccurs="unbounded"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="EmploymentOldNewType">
+          <xsd:sequence>
+               <xsd:element name="Operation" type="xsd:string" maxOccurs="1"/>
+               <xsd:element name="OldEmploymentDetails"
+                            type="PortalEmploymentDetailsType" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="NewEmploymentDetails"
+                            type="PortalEmploymentDetailsType" minOccurs="0"
+                            maxOccurs="1"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="taxpayerAmendEmploymentDetailsOutput">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="PortalEmploymentDetailsType">
+          <xsd:sequence>
+               <xsd:element name="EmployersTIN" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="EmployersName" type="xsd:string"/>
+               <xsd:element name="Position" type="xsd:string"/>
+               <xsd:element name="EmploymentStartDate" type="xsd:date"/>
+               <xsd:element name="EmploymentCeasedDate" type="xsd:date"
+                            minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="TaxpayerRegistrationDetails">
+          <xsd:sequence>
+               <xsd:element name="ApplicantTIN" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="FirstName" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="MiddleName" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="LastName" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="Position" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="PostalAddress" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="ContactDetails" type="xsd:string"
+                            minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="DateOfSignature" type="xsd:date" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="DateOfSubmission" type="xsd:date"
+                            minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="ReceivingOffice" type="xsd:string"
+                            minOccurs="0" maxOccurs="1"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="taxpayerAmendNameDetails">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="Title" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="FirstName" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="MiddleName" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="LastName" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="taxpayerAmendBusinessDetails">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="OccupationStatus" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="MainCategory" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="PreciseCategory" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="taxpayerAmendNameDetailsOutput">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <!-- Start of Addition of AmendBusiness details response -->
+     <xsd:complexType name="taxpayerAmendBusinessDetailsOutput">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <!-- End of Addition of AmendBusiness details response -->
+     <xsd:complexType name="taxpayerAmendPersonalDetails">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string"/>
+               <xsd:element name="PreviousLastName" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="PreviousFullName" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="MothersFirstName" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="MothersMiddleName" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="CountryOfBirth" type="xsd:string"/>
+               <xsd:element name="BirthRegion" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="BirthDistrict" type="xsd:string"
+                            minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="taxpayerAmendPersonalDetailsOutput">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="AmendDirectorSubsidiaryDetail">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="EntityRelationtionDetails"
+                            type="RelationshipDetails" minOccurs="0"
+                            maxOccurs="unbounded"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="AmendDirectorSubsidiaryDetailResponse">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="RelationshipDetails">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="Operation" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="RelationshipType" type="xsd:string"
+                            minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="RelationshipStartDate" type="xsd:date"
+                            minOccurs="0" nillable="true"/>
+               <xsd:element name="RelationshipEndDate" type="xsd:date"
+                            minOccurs="0" nillable="true"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="ServiceResponseType">
+          <xsd:sequence>
+               <xsd:element name="Code" type="xsd:string"/>
+               <xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="HasError" type="xsd:boolean" minOccurs="0"/>
+               <xsd:element name="HasWarning" type="xsd:boolean" minOccurs="0"/>
+               <xsd:element name="Trace" type="xsd:string" minOccurs="0"
+                            nillable="true"/>
+               <xsd:element name="Error" type="ErrorType" minOccurs="0"
+                            maxOccurs="unbounded"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="taxpayerAmendOrganisationName">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string"/>
+               <xsd:element name="BusinessSectorCode" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Organisation" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="TradingAs" type="xsd:string" minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="taxpayerAmendOrganisationNameOutput">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="AmendAddressDetail">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="Address" type="AddressUpdateType"
+                            minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="AmendAddressDetailResponse">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="AddressUpdateType">
+          <xsd:sequence>
+               <xsd:element name="Operation" type="xsd:string"/>
+               <xsd:element name="OldAddress" type="AddressTypeDetails"
+                            minOccurs="0"/>
+               <xsd:element name="NewAddress" type="AddressTypeDetails"
+                            minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="AddressTypeDetails">
+          <xsd:sequence>
+               <xsd:element name="PrimaryIndicator" type="xsd:boolean"/>
+               <xsd:element name="UseType" type="xsd:string"/>
+               <xsd:element name="HouseNumber" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="BuildingName" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="StreetName" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="TownCity" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="CountyState" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Region" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="District" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="PostCode" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Country" type="xsd:string"/>
+               <xsd:element name="Municipality" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="Province" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="PostalAddressPOBox" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="PostOfficeLocation" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="PMB" type="xsd:boolean" minOccurs="0"/>
+               <xsd:element name="EffectiveDate" type="xsd:date"/>
+               <xsd:element name="ExpiryDate" type="xsd:date" minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="PropertyAddressTypeDetails">
+          <xsd:sequence>
+               <xsd:element name="PrimaryIndicator" type="xsd:boolean"/>
+               <xsd:element name="UseType" type="xsd:string"/>
+               <xsd:element name="HouseNumber" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="BuildingName" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="StreetName" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="TownCity" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="CountyState" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Region" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="District" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="PostCode" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Country" type="xsd:string"/>
+               <xsd:element name="Municipality" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Province" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="PostalAddressPOBox" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="PostOfficeLocation" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="PMB" type="xsd:boolean" minOccurs="0"/>
+               <xsd:element name="EffectiveDate" type="xsd:date"/>
+               <xsd:element name="ExpiryDate" type="xsd:date" minOccurs="0"/>
+               <!--xsd:element name="AddressTypeStr" type="xsd:string" minOccurs="0"/-->
+               <!--xsd:element name="FalseAddress" type="xsd:boolean" minOccurs="0"/>
+               <xsd:element name="ForeignIndicator" type="xsd:boolean" minOccurs="0"/-->
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="AmendBranchDetail">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string" minOccurs="0"
+                            maxOccurs="1"/>
+               <xsd:element name="Branch" type="BranchUpdateType" minOccurs="0"
+                            maxOccurs="unbounded"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="AmendBranchDetailResponse">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="BranchUpdateType">
+          <xsd:sequence>
+               <xsd:element name="Operation" type="xsd:string"/>
+               <xsd:element name="OldBranch" type="BranchDetailType"
+                            minOccurs="0"/>
+               <xsd:element name="NewBranch" type="BranchDetailType"
+                            minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="BranchDetailType">
+          <xsd:sequence>
+               <xsd:element name="Name" type="xsd:string"/>
+               <xsd:element name="CeasedDate" type="xsd:date" minOccurs="0"/>
+               <xsd:element name="Address" type="AddressTypeDetails"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="ErrorType">
+          <xsd:sequence>
+               <xsd:element name="ErrorCode" type="xsd:string"/>
+               <xsd:element name="ErrorDescription" type="xsd:string"/>
+               <xsd:element name="trace" type="xsd:string" minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <!-- *********************************** Account Enquiry Types *********************************** -->
+     <xsd:complexType name="ViewAccountDetailsReq">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="TaxType" type="xsd:string" minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="ViewAccountDetailsRes">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType">
+                    <xsd:sequence>
+                         <xsd:element name="Balance" type="xsd:decimal"
+                                      minOccurs="0"/>
+                         <xsd:element name="PeriodicAccounts"
+                                      type="PeriodicAccountType" minOccurs="0"
+                                      maxOccurs="unbounded"/>
+                         <xsd:element name="NonPeriodicAccounts"
+                                      type="NonPeriodicAccountType"
+                                      minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+               </xsd:extension>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="PeriodicAccountType">
+          <xsd:complexContent>
+               <xsd:extension base="AccountType">
+                    <xsd:sequence>
+                         <xsd:element name="Periods" type="PeriodType"
+                                      minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+               </xsd:extension>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="NonPeriodicAccountType">
+          <xsd:complexContent>
+               <xsd:extension base="AccountType">
+                    <xsd:sequence>
+                         <xsd:element name="Documents" type="DocumentType"
+                                      minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+               </xsd:extension>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="TransactionType">
+          <xsd:sequence>
+               <xsd:element name="Type" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="SubCategory" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Amount" type="xsd:decimal" minOccurs="0"/>
+               <xsd:element name="Balance" type="xsd:decimal" minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="EventType">
+          <xsd:sequence>
+               <xsd:element name="Date" type="xsd:date" minOccurs="0"/>
+               <xsd:element name="Type" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Balance" type="xsd:decimal" minOccurs="0"/>
+               <xsd:element name="Transactions" type="TransactionType"
+                            minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="DocumentType">
+          <xsd:sequence>
+               <xsd:element name="Date" type="xsd:date" minOccurs="0"/>
+               <xsd:element name="Type" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Number" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Status" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Balance" type="xsd:decimal" minOccurs="0"/>
+               <xsd:element name="DocumentStatusActive" type="xsd:boolean"
+                            minOccurs="0"/>
+               <xsd:element name="Events" type="EventType" minOccurs="0"
+                            maxOccurs="unbounded"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="PeriodType">
+          <xsd:sequence>
+               <xsd:element name="ReturnType" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Number" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Status" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Balance" type="xsd:decimal" minOccurs="0"/>
+               <xsd:element name="Documents" type="DocumentType" minOccurs="0"
+                            maxOccurs="unbounded"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="AccountType">
+          <xsd:sequence>
+               <xsd:element name="Type" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Number" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Status" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="Balance" type="xsd:decimal" minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <!-- *********************************** End Account Enquiry Types *********************************** -->
+     <!-- *********************************** Start Register Taxpayer Types *********************************** -->
+     <xsd:complexType name="RegisterIndividualTaxpayer">
+          <xsd:sequence>
+               <!-- Individual Summary Details -->
+               <xsd:element name="Category" type="xsd:string"/>
+               <xsd:element name="Title" type="xsd:string"/>
+               <xsd:element name="FirstName" type="xsd:string"/>
+               <xsd:element name="MiddleName" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="LastName" type="xsd:string"/>
+               <xsd:element name="EDR" type="xsd:date"/>
+               <!-- Individual Details -->
+               <xsd:element name="PreviousLastName" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="Gender" type="xsd:string"/>
+               <xsd:element name="MaritalStatus" type="xsd:string"/>
+               <xsd:element name="DateOfBirth" type="xsd:date"/>
+               <xsd:element name="MothersMaidenLastName" type="xsd:string"/>
+               <xsd:element name="MothersFirstName" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="BirthVillageTown" type="xsd:string"/>
+               <xsd:element name="CountryofBirth" type="xsd:string"/>
+               <xsd:element name="BirthRegion" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="BirthDistrict" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="Nationality" type="xsd:string"/>
+               <xsd:element name="Resident" type="xsd:boolean"/>
+               <xsd:element name="Importer" type="xsd:boolean"/>
+               <xsd:element name="Exporter" type="xsd:boolean"/>
+               <xsd:element name="TaxConsultant" type="xsd:boolean"/>
+               <!-- Registration Details -->
+               <xsd:element name="IRSFileNo" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="PreviousTIN" type="xsd:string" minOccurs="0"/>
+               <!-- Should we accept? -->
+               <xsd:element name="AssignedTaxOffice" type="xsd:string"
+                            minOccurs="0"/>
+               <!-- Identification Details -->
+               <xsd:element name="Identification" type="IdentificationType"
+                            minOccurs="0"/>
+               <!-- Address Details -->
+               <xsd:element name="Address" type="AddressTypeDetails"
+                            maxOccurs="unbounded"/>
+               <!-- Contact Method Details -->
+               <xsd:element name="ContactMethod" type="ContactMethodType"
+                            maxOccurs="unbounded" minOccurs="0"/>
+               <!-- Employment Details -->
+               <xsd:element name="Employment" type="EmploymentType"
+                            maxOccurs="unbounded" minOccurs="0"/>
+               <!-- Occupation Details -->
+               <xsd:element name="Occupation" type="OccupationType"
+                            minOccurs="0"/>
+               <!-- Business Sector Details -->
+               <xsd:element name="BusinessSector" type="BusinessSectorType"
+                            minOccurs="0" maxOccurs="unbounded"/>
+               <!-- Attachment Details -->
+               <xsd:element name="Attachment" type="AttachmentType"
+                            maxOccurs="unbounded" minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="RegisterIndividualTaxpayerRes">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="IdentificationType">
+          <xsd:sequence>
+               <xsd:element name="IdentificationType" type="xsd:string"/>
+               <xsd:element name="IdentificationNumber" type="xsd:string"/>
+               <xsd:element name="IdVerificationCode" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="DateOfIssue" type="xsd:date" minOccurs="0"/>
+               <xsd:element name="IdentificationExpiryDate" type="xsd:date"
+                            minOccurs="0"/>
+               <xsd:element name="CountryOfIssue" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="PlaceOfIssue" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="VerificationType" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="AutoApproval" type="xsd:string"
+                            minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="AttachmentType">
+          <xsd:complexContent>
+               <xsd:extension base="FileAttachmentType">
+                    <xsd:sequence>
+                         <xsd:element name="DateReceived" type="xsd:date"/>
+                         <xsd:element name="DocumentType" type="xsd:string"/>
+                         <xsd:element name="ReferenceNumber" type="xsd:string"
+                                      minOccurs="0"/>
+                         <xsd:element name="Notes" type="xsd:string"
+                                      minOccurs="0"/>
+                         <xsd:element name="FileStoreId" type="xsd:long"
+                                      minOccurs="0"/>
+                    </xsd:sequence>
+               </xsd:extension>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="PortalFlexibleFormAttachmentType">
+          <xsd:complexContent>
+               <xsd:extension base="FileAttachmentType">
+                    <xsd:sequence>
+                         <xsd:element name="ReferenceNumber" type="xsd:string"
+                                      minOccurs="0"/>
+                         <xsd:element name="Notes" type="xsd:string"
+                                      minOccurs="0"/>
+                         <xsd:element name="FileStoreId" type="xsd:long"
+                                      minOccurs="0"/>
+                    </xsd:sequence>
+               </xsd:extension>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="AppAttachmentType">
+          <xsd:sequence>
+               <xsd:element name="AttachmentName" type="xsd:string"/>
+               <xsd:element name="AttachmentDate" type="xsd:date"/>
+               <xsd:element name="FileStoreId" type="xsd:long"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="AppAttributesType">
+          <xsd:sequence>
+               <xsd:element name="QualificationAttributeName"
+                            type="xsd:string"/>
+               <xsd:element name="QualificationAttributeValue"
+                            type="xsd:string"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="ContactMethodType">
+          <xsd:sequence>
+               <xsd:element name="PrimaryIndicator" type="xsd:boolean"/>
+               <xsd:element name="Purpose" type="xsd:string"/>
+               <xsd:element name="DetailType" type="xsd:string"/>
+               <xsd:element name="Details" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="EffectiveDate" type="xsd:date"/>
+               <xsd:element name="ExpiryDate" type="xsd:date" minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="EmploymentType">
+          <xsd:sequence>
+               <xsd:element name="EmployersTIN" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="EmployersName" type="xsd:string"/>
+               <xsd:element name="Position" type="xsd:string"/>
+               <xsd:element name="EmploymentStartDate" type="xsd:date"/>
+               <xsd:element name="EmploymentCeasedDate" type="xsd:date"
+                            minOccurs="0"/>
+               <xsd:element name="RelationshipTargetId" type="xsd:long"
+                            minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="OccupationType">
+          <xsd:sequence>
+               <xsd:element name="OccupationStatus" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="MainCategory" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="PreciseCategory" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="AnnualGrossReceipts" type="xsd:long"
+                            minOccurs="0"/>
+               <xsd:element name="Turnover" type="xsd:double" minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="BusinessSectorType">
+          <xsd:sequence>
+               <xsd:element name="Code" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="PrimaryBusinessSector" type="xsd:boolean"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="FileAttachment">
+          <xsd:complexContent>
+               <xsd:extension base="FileAttachmentType">
+                    <xsd:sequence>
+                         <xsd:element name="ContentLength" type="xsd:long"
+                                      minOccurs="0"/>
+                    </xsd:sequence>
+               </xsd:extension>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="FileAttachmentResponse">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType">
+                    <xsd:sequence>
+                         <xsd:element name="FileStoreId" type="xsd:string"
+                                      minOccurs="0"/>
+                    </xsd:sequence>
+               </xsd:extension>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <!-- *********************************** End Register Taxpayer Types *********************************** -->
+     <!-- *********************************** Start System Service Types *********************************** -->
+     <xsd:complexType name="RefDataType">
+          <xsd:sequence>
+               <xsd:element name="Code" type="xsd:string"/>
+               <xsd:element name="Description" type="xsd:string"/>
+               <xsd:element name="Status" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="ValidFrom" type="xsd:date" minOccurs="0"/>
+               <xsd:element name="ValidTo" type="xsd:date" minOccurs="0"/>
+               <xsd:element name="References" type="xsd:string" minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="GetReferenceData">
+          <xsd:sequence>
+               <xsd:element name="TableName" type="xsd:string"/>
+               <xsd:element name="UpdatedSince" type="xsd:date"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="GetReferenceDataRes">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType">
+                    <xsd:sequence>
+                         <xsd:element name="RefData" type="RefDataType"
+                                      minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+               </xsd:extension>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <!-- *********************************** End  System Service Types *********************************** -->
+     <!-- *********************************** Start Register TaxType Types *********************************** -->
+     <xsd:complexType name="RegisterTaxType">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="TaxType" type="TaxTypeDetails" minOccurs="0"
+                            maxOccurs="unbounded"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="RegisterTaxTypeRes">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="TaxTypeDetails">
+          <xsd:sequence>
+               <xsd:element name="DetailType" type="xsd:string"/>
+               <xsd:element name="ReturnType" type="xsd:string" minOccurs="0"
+                            maxOccurs="unbounded"/>
+               <xsd:element name="SubmissionDate" type="xsd:date"
+                            minOccurs="0"/>
+               <xsd:element name="EDR" type="xsd:date"/>
+               <xsd:element name="TaxableTurnover" type="xsd:decimal"
+                            minOccurs="0"/>
+               <!-- Element OverrideFilingFrequency Not used , commented the code as per TRGHA-7350 for PAYE Tax Type-->
+               <!--
+			<xsd:element name="OverrideFilingFrequency" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="OverrideStartMonth" type="bt:MonthType" minOccurs="0"/>
+			-->
+               <xsd:element name="AccountStatus" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="ForcedRegistration" type="xsd:boolean"
+                            minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <!-- *********************************** End  Register TaxType Types *********************************** -->
+     <!-- *********************************** Start Suspend TaxType Types *********************************** -->
+     <xsd:complexType name="SuspendTaxType">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string"/>
+               <xsd:element name="DetailType" type="xsd:string"/>
+               <xsd:element name="EDR" type="xsd:date"/>
+               <xsd:element name="AccountStatus" type="xsd:string"/>
+               <xsd:element name="SuspensionStartDate" type="xsd:date"/>
+               <xsd:element name="SuspensionEndDate" type="xsd:date"
+                            minOccurs="0"/>
+               <xsd:element name="Reason" type="xsd:string"/>
+               <xsd:element name="Notes" type="xsd:string" minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="SuspendTaxTypeRes">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <!-- *********************************** End Suspend TaxType Types *********************************** -->
+     <xsd:complexType name="DeregisterTaxType">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string"/>
+               <xsd:element name="TaxType" type="xsd:string"/>
+               <xsd:element name="EDD" type="xsd:date"/>
+               <xsd:element name="DeRegistrationReason" type="xsd:string"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="DeregisterTaxTypeRes">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="ReactivateTaxType">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string"/>
+               <xsd:element name="TaxType" type="xsd:string"/>
+               <xsd:element name="ReactivationDate" type="xsd:date"/>
+               <xsd:element name="Reason" type="xsd:string"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="ReactivateTaxTypeRes">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <!-- *********************************** Start Transfer Taxpayer Types *********************************** -->
+     <xsd:complexType name="TransferTaxpayer">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string"/>
+               <xsd:element name="CurrentOffice" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="NewOffice" type="xsd:string"/>
+               <xsd:element name="DateofTransfer" type="xsd:date"/>
+               <xsd:element name="Reason" type="xsd:string"/>
+               <xsd:element name="Notes" type="xsd:string" minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="TransferTaxpayerRes">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <!-- *********************************** End Transfer Taxpayer Types *********************************** -->
+     <!-- *************************************** Start Payment Types *************************************** -->
+     <xsd:complexType name="GetPaymentReceipt">
+          <xsd:sequence>
+               <xsd:element name="ReceiptNo" type="xsd:string"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="GetPaymentReceiptRes">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType">
+                    <xsd:sequence>
+                         <xsd:element name="PaymentDetails"
+                                      type="PaymentDetailsType" minOccurs="0"/>
+                    </xsd:sequence>
+               </xsd:extension>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="PaymentDetailsType">
+          <xsd:complexContent>
+               <xsd:extension base="FileAttachmentType"/>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="FileAttachmentType">
+          <xsd:sequence>
+               <xsd:element name="FileName" type="xsd:string"/>
+               <xsd:element name="FileType" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="FileAttachment" type="xsd:base64Binary"
+                            xmime:expectedContentTypes="application/octet-stream"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <!-- *************************************** End Payment Types *************************************** -->
+     <!-- ************************************ Start Transaction Types ************************************ -->
+     <xsd:complexType name="ExtractInvoiceTransactionsReq">
+          <xsd:sequence>
+               <xsd:element name="DateTimeFrom" type="xsd:dateTime"/>
+               <xsd:element name="DateTimeTo" type="xsd:dateTime"/>
+               <xsd:element name="CalledBy" type="xsd:string"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="ExtractInvoiceTransactionsRes">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType">
+                    <xsd:sequence>
+                         <xsd:element name="Transactions"
+                                      type="TransExtInvoiceType" minOccurs="0"
+                                      maxOccurs="unbounded"/>
+                    </xsd:sequence>
+               </xsd:extension>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:complexType name="ExtractPaymentTransactionsReq">
+          <xsd:sequence>
+               <xsd:element name="DateTimeFrom" type="xsd:dateTime"/>
+               <xsd:element name="DateTimeTo" type="xsd:dateTime"/>
+               <xsd:element name="CalledBy" type="xsd:string"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="ExtractPaymentTransactionsRes">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType">
+                    <xsd:sequence>
+                         <xsd:element name="Transactions"
+                                      type="TransExtPaymentType" minOccurs="0"
+                                      maxOccurs="unbounded"/>
+                    </xsd:sequence>
+               </xsd:extension>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:element name="TransExtInvoiceType" type="TransExtInvoiceType"/>
+     <xsd:complexType name="TransExtInvoiceType">
+          <xsd:sequence>
+               <!-- CREDIT or DEBIT -->
+               <xsd:element name="Type" type="xsd:string"/>
+               <!-- Posted transaction amount -->
+               <xsd:element name="Amount" type="xsd:decimal"/>
+               <!-- The generated transaction reference number -->
+               <xsd:element name="Number" type="xsd:string"/>
+               <!-- Encoded period number: num/year -->
+               <xsd:element name="PeriodNumber" type="xsd:string"
+                            minOccurs="0"/>
+               <!-- The taxpayer account number the transaction belongs to -->
+               <xsd:element name="AccountNumber" type="xsd:string"/>
+               <!-- Date and time that the transaction was recorded -->
+               <xsd:element name="Date" type="xsd:dateTime"/>
+               <!-- Revenue Ledger code generated from the trips posting rules -->
+               <xsd:element name="RevLedCode" type="xsd:string"/>
+               <!-- Optional description of the posted transaction -->
+               <xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+               <!-- Office code from REF_OFFICE -->
+               <xsd:element name="Office" type="xsd:string" minOccurs="0"/>
+               <!-- Document type -->
+               <xsd:element name="DocumentType" type="xsd:string"/>
+               <!-- The taxpayer TIN the transaction belongs to -->
+               <xsd:element name="TIN" type="xsd:string"/>
+               <!-- Document Event type -->
+               <xsd:element name="DocumentEventType" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="TaxType" type="xsd:string"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:element name="TransExtPaymentType" type="TransExtPaymentType"/>
+     <xsd:complexType name="TransExtPaymentType">
+          <xsd:sequence>
+               <!-- Currency that the payment was received in -->
+               <xsd:element name="Currency" type="xsd:string"/>
+               <!-- Amount Received -->
+               <xsd:element name="PaymentAmount" type="xsd:decimal"/>
+               <xsd:element name="PaymentDate" type="xsd:dateTime"/>
+               <!-- Location where the payment was received -->
+               <xsd:element name="Till" type="xsd:string"/>
+               <xsd:element name="ExchangeRate" type="xsd:decimal"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="ExtractTransactionsReq">
+          <xsd:sequence>
+               <xsd:element name="DateTimeFrom" type="xsd:dateTime"/>
+               <xsd:element name="DateTimeTo" type="xsd:dateTime"/>
+               <xsd:element name="CalledBy" type="xsd:string"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="ExtractTransactionsRes">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType">
+                    <xsd:sequence>
+                         <xsd:element name="Transactions" type="TransExtType"
+                                      minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+               </xsd:extension>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:element name="TransExtType" type="TransExtType"/>
+     <xsd:complexType name="TransExtType">
+          <xsd:sequence>
+               <!-- CREDIT or DEBIT -->
+               <xsd:element name="TransType" type="xsd:string"/>
+               <!-- Posted transaction amount -->
+               <xsd:element name="Amount" type="xsd:decimal"/>
+               <!-- Document type -->
+               <xsd:element name="DocType" type="xsd:string"/>
+               <!-- Document type -->
+               <xsd:element name="DocEventType" type="xsd:string"
+                            minOccurs="0"/>
+               <!-- The generated transaction reference number -->
+               <xsd:element name="TransReference" type="xsd:string"/>
+               <!-- The taxpayer TIN the transaction belongs to -->
+               <xsd:element name="TIN" type="xsd:string"/>
+               <!-- The taxpayer account number the transaction belongs to -->
+               <xsd:element name="AccountNumber" type="xsd:string"/>
+               <!-- Date and time that the transaction was recorded -->
+               <xsd:element name="TransDate" type="xsd:dateTime"/>
+               <!-- Revenue Ledger code generated from the trips posting rules -->
+               <xsd:element name="RevLedCode" type="xsd:string"/>
+               <xsd:element name="TaxType" type="xsd:string"/>
+               <!-- Optional description of the posted transaction -->
+               <xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+               <!-- Office code from REF_OFFICE -->
+               <xsd:element name="Office" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="ReceiptNumber" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="AllocationItemType" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="PaymentAllocationTaxOffice" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="PaymentCurrency" type="xsd:string"
+                            minOccurs="0"/>
+               <xsd:element name="AmountInForex" type="xsd:decimal"
+                            minOccurs="0"/>
+               <xsd:element name="ExchangeRate" type="xsd:decimal"
+                            minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <!-- ************************************* End Transaction Types ************************************* -->
+     <!-- ************************************ Start View Available Return Types ************************************ -->
+     <xsd:complexType name="ViewAvailableReturnDetailsReq">
+          <xsd:sequence>
+               <xsd:element name="TIN" type="xsd:string"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <xsd:complexType name="ViewAvailableReturnDetailsRes">
+          <xsd:complexContent>
+               <xsd:extension base="ServiceResponseType">
+                    <xsd:sequence>
+                         <xsd:element name="TIN" type="xsd:string"
+                                      minOccurs="0"/>
+                         <xsd:element name="ReturnDocumentDetails"
+                                      type="ReturnDocumentDetailsType"
+                                      minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+               </xsd:extension>
+          </xsd:complexContent>
+     </xsd:complexType>
+     <xsd:element name="ReturnDocumentDetailsType"
+                  type="ReturnDocumentDetailsType"/>
+     <xsd:complexType name="ReturnDocumentDetailsType">
+          <xsd:sequence>
+               <xsd:element name="DocumentType" type="xsd:string"/>
+               <xsd:element name="PeriodYear" type="xsd:string"/>
+               <xsd:element name="PeriodNumber" type="xsd:string"/>
+               <xsd:element name="PeriodFromDate" type="xsd:date"
+                            minOccurs="0"/>
+          </xsd:sequence>
+     </xsd:complexType>
+     <!-- ************************************* End View Return Document Types ************************************ -->
+</xsd:schema>

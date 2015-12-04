@@ -1,0 +1,1073 @@
+<searchList>
+    <!--search>
+        <note>USED FOR FINDING INSTALLMENT AGREEMENT</note>
+        <id>FIND_INSTALLMENT_AGREEMENT</id>
+        <sectionHeading>FIND INSTALLMENT AGREEMENT</sectionHeading>
+        <windowHeading>Trips - Installment Agreement Search Screen</windowHeading>
+        <criteriaFields>
+            <field>
+            <fieldName>tin</fieldName>
+            <fieldType>string</fieldType>
+            <fieldLabel>TIN</fieldLabel>
+            <columnName>REV_ACC.ACCT_NO</columnName>
+          </field>
+           <field>
+            <fieldName>firstName</fieldName>
+            <fieldType>string</fieldType>
+            <fieldLabel>First Name</fieldLabel>
+            <columnName>ENT_INDIVIDUAL.FIRST_NAME</columnName>
+          </field>     
+            <field>
+            <fieldName>lastName</fieldName>
+            <fieldType>string</fieldType>
+            <fieldLabel>Last Name</fieldLabel>
+            <columnName>ENT_INDIVIDUAL.LAST_NAME</columnName>
+          </field>
+          <field>
+            <fieldName>taxType</fieldName>
+            <fieldType>string</fieldType>
+            <fieldLabel>Tax Type</fieldLabel>
+            <columnName>REF_REV_TYPE.CODE</columnName>
+          </field>  
+          <field>
+            <fieldName>returnPeriod</fieldName>
+            <fieldType>date</fieldType>
+            <fieldLabel>Return Period</fieldLabel>
+            <columnName>REVLED_REV_PERIOD.PERIOD_END</columnName>
+          </field>
+          <field>
+            <fieldName>status</fieldName>
+            <fieldType>string</fieldType>
+            <fieldLabel>Status</fieldLabel>
+            <columnName>REVENUE_DEFERMENT.PAYMENT_STATUS</columnName>
+          </field>
+        </criteriaFields>
+        <resultFields>
+           <field>
+            <columnOrderNbr>1</columnOrderNbr>
+            <fieldName>taxType</fieldName>
+            <fieldType>string</fieldType>
+            <columnHeading>Tax Type</columnHeading>
+            <columnName>REF_REV_TYPE.CODE</columnName>
+          </field>
+          <field>
+            <columnOrderNbr>2</columnOrderNbr>
+            <fieldName>returnPeriod</fieldName>
+            <fieldType>date</fieldType>
+            <columnHeading>Return Period</columnHeading>
+            <columnName>REVLED_REV_PERIOD.PERIOD_END</columnName>
+          </field>
+          <field>
+            <columnOrderNbr>3</columnOrderNbr>
+            <fieldName>status</fieldName>
+            <fieldType>string</fieldType>
+            <columnHeading>Status</columnHeading>
+            <columnName>REVENUE_DEFERMENT.PAYMENT_STATUS</columnName>
+          </field>
+          <field>
+            <columnOrderNbr>99</columnOrderNbr>
+            <fieldName>ID</fieldName>
+            <fieldType>number</fieldType>
+            <columnHeading>EntityID</columnHeading>
+            <columnName>ENT_ENTITY.ID</columnName>
+            <isIdField>Y</isIdField>
+            <isVisible>N</isVisible>
+          </field>
+        </resultFields>
+        <searchTables>
+          <table>
+            <name>ENT_ENTITY join REV_ACC on ENT_ENTITY.ID = REV_ACC.ENT_ENTITY
+            join ENT_INDIVIDUAL on ENT_INDIVIDUAL.ID = ENT_ENTITY.ID
+            join REF_REV_TYPE on REV_ACC.REVENUE_TYPE = REF_REV_TYPE.CODE
+            join REVLED_REV_PERIOD on REV_ACC.ID = REVLED_REV_PERIOD.REV_ACC
+            <join REVENUE_DEFERMENT on REV_ACC.ID = REVENUE_DEFERMENT.REVENUE_ACCOUNT_ID></name>
+          </table>
+        </searchTables>
+        <joinQuery></joinQuery>
+        <actions>
+          <action>
+            <actionId>view</actionId>
+            <actionLabel>View</actionLabel>
+            <actionCallBack>view</actionCallBack>
+            <allowableModes>viewMode</allowableModes>
+          </action>
+        </actions>
+    </search-->
+  <search>
+    <id>FIND_TAXPAYER_TCC</id>
+    <sectionHeading>Find Entity</sectionHeading>
+    <windowHeading>Trips - Find Entity</windowHeading>
+    <advancedSearchAvailable>Y</advancedSearchAvailable>
+    <multiAdvancedSearchAvailable>Basic</multiAdvancedSearchAvailable>
+    <multiSearchFieldColumnName>ENT_ENTITY.ENTITY_TYPE</multiSearchFieldColumnName>
+    <supportsMultiQueryInjections>Y</supportsMultiQueryInjections>
+    <queryType>distinct</queryType>
+    <criteriaFields>
+      <field>
+        <fieldName>forField</fieldName>
+        <fieldType>forField</fieldType>
+        <fieldLabel>Entity Type</fieldLabel>
+        <columnName>ENT_ENTITY.DTYPE</columnName>
+      </field>
+       <field>
+        <fieldName>legalStatus</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Legal Status</fieldLabel>
+        <columnName>ENT_ENTITY.LEGAL_STATUS</columnName>
+        <listId>LEGAL_STATUS_TYPE</listId>
+      </field>  
+      <field>
+        <fieldName>accountNumber</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Taxpayer Number</fieldLabel>
+        <columnName>REV_ACC.ACCT_NO</columnName>
+      </field>  
+       <field>
+        <fieldName>office</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Office</fieldLabel>
+        <!--firstItemSelected>true</firstItemSelected-->
+        <columnName>REV_ACC.REF_OFFICE</columnName>
+        <listId>USER_OFFICE_LIST</listId>
+        <disabled>true</disabled>
+        <isVisible>N</isVisible>
+      </field>
+    </criteriaFields>
+    <advancedCriteriaFields forField="Individual">
+      <field>
+        <fieldName>firstName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>First Name</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.first_name</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+      </field>
+      <field>
+        <fieldName>lastName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Last Name</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.last_name</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+        <alternateParameter>middleName</alternateParameter>
+        <alternateOperator>OR</alternateOperator>
+      </field>  
+       <field>
+        <fieldName>maidenName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Maiden Name</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.mother_maiden_name</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+        <alternateParameter>lastName</alternateParameter>
+        <alternateOperator>OR</alternateOperator>
+      </field>  
+       <field>
+        <fieldName>middleName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Middle Name</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.middle_name</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+         <alternateParameter>lastName</alternateParameter>
+         <alternateOperator>OR</alternateOperator>
+      </field>     
+       <field>
+        <fieldName>dateOfBirth</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Date Of Birth</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.DATE_OF_BIRTH</columnName>
+      </field> 
+    </advancedCriteriaFields>
+    <advancedCriteriaFields forField="Organization">
+      <field>
+        <fieldName>companyName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Company Name</fieldLabel>
+        <columnName>ENT_ORGANIZATION.legal_name</columnName>  
+        <fieldFunction>SOUNDEX</fieldFunction>  
+      </field>
+      <field>
+        <fieldName>tradingName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Trading Name</fieldLabel>
+        <columnName>ENT_ORGANIZATION.TRADING_AS</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+      </field>
+    </advancedCriteriaFields>
+    <resultFields>
+      <field>
+        <columnOrderNbr>1</columnOrderNbr>
+        <fieldName>entityType</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Entity Type</columnHeading>
+        <columnName>ENT_ENTITY.entity_type</columnName>
+        <getValueFromResources>Y</getValueFromResources>
+      </field>
+      <field>
+        <columnOrderNbr>2</columnOrderNbr>
+        <fieldName>entityName</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Name</columnHeading>
+        <columnName>replace(ENT_ENTITY.entity_name, 'SUFF_', '') as entity_name</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>5</columnOrderNbr>
+        <fieldName>tin</fieldName>
+        <fieldType>tinformat</fieldType>
+        <columnHeading>TIN</columnHeading>
+        <columnName>REV_ACC.ACCT_NO</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>99</columnOrderNbr>
+        <fieldName>EntityID</fieldName>
+        <fieldType>number</fieldType>
+        <columnHeading>EntityID</columnHeading>
+        <columnName>ENT_ENTITY.id</columnName>
+        <isIdField>Y</isIdField>
+        <isVisible>N</isVisible>
+      </field>
+      <field>
+        <columnOrderNbr>100</columnOrderNbr>
+        <fieldName>dType</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>dType</columnHeading>
+        <columnName>ENT_ENTITY.DTYPE</columnName>
+        <isVisible>N</isVisible>
+      </field>
+    </resultFields>
+    <searchTables>
+      <table>
+        <name>ENT_ENTITY join REV_ACC on ENT_ENTITY.ID = REV_ACC.ENT_ENTITY</name>
+      </table>
+    </searchTables>
+    <dynamicQueryInjections>
+      <dynamicQueryInjection>
+        <forField>forField</forField>
+        <withValue>Organization</withValue>
+        <table>
+          <name>ENT_ORGANIZATION, </name>
+        </table>
+        <where>ENT_ENTITY.ID = ENT_ORGANIZATION.ID</where>
+      </dynamicQueryInjection>
+      <dynamicQueryInjection>
+        <forField>forField</forField>
+        <withValue>Individual</withValue>
+        <table>
+          <name>ENT_INDIVIDUAL</name>
+        </table>
+        <where>ENT_ENTITY.ID = ENT_INDIVIDUAL.ID</where>
+      </dynamicQueryInjection>
+    </dynamicQueryInjections>
+    <actions>
+      <action>
+        <actionId>view</actionId>
+        <actionLabel>Continue</actionLabel>
+        <actionCallBack>view</actionCallBack>
+        <allowableModes>viewMode</allowableModes>
+      </action>
+      <action>
+        <actionId>edit</actionId>
+        <actionLabel>Continue</actionLabel>
+        <actionCallBack>edit</actionCallBack>
+        <allowableModes>editMode</allowableModes>
+      </action>
+      <action>
+        <actionId>add</actionId>
+        <actionLabel>Continue</actionLabel>
+        <actionCallBack>add</actionCallBack>
+        <allowableModes>addMode</allowableModes>
+      </action>
+    </actions>
+  </search>  
+  <search>
+    <id>FIND_INSTALLMENT_AGREEMENT</id>
+    <sectionHeading>Find Installment Agreement</sectionHeading>
+    <windowHeading>Trips - Find Installment Agreement</windowHeading>
+    <advancedSearchAvailable>Y</advancedSearchAvailable>
+    <multiAdvancedSearchAvailable>Basic</multiAdvancedSearchAvailable>
+    <multiSearchFieldColumnName>ENT_ENTITY.ENTITY_TYPE</multiSearchFieldColumnName>
+    <supportsMultiQueryInjections>Y</supportsMultiQueryInjections>
+    <queryType>distinct</queryType>
+    <criteriaFields>
+      <field>
+        <fieldName>forField</fieldName>
+        <fieldType>forField</fieldType>
+        <fieldLabel>Entity Type</fieldLabel>
+        <columnName>ENT_ENTITY.DTYPE</columnName>
+      </field>
+       <field>
+        <fieldName>legalStatus</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Legal Status</fieldLabel>
+        <columnName>ENT_ENTITY.LEGAL_STATUS</columnName>
+        <listId>LEGAL_STATUS_TYPE</listId>
+      </field>  
+      <field>
+        <fieldName>accountNumber</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Taxpayer Number</fieldLabel>
+        <columnName>REV_ACC.ACCT_NO</columnName>
+         <isVisible>N</isVisible>
+      </field>  
+       <field>
+        <fieldName>taxpayerCode</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Taxpayer Number</fieldLabel>
+        <columnName>REV_ENTITY_ACC.TP_IDENTIFIER_CODE</columnName>
+      </field>  
+       <field>
+        <fieldName>branchCode</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Branch Number</fieldLabel>
+        <columnName>REV_ENTITY_ACC.TP_BRANCH_CODE</columnName>
+      </field>  
+       <field>
+        <fieldName>office</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Office</fieldLabel>
+        <!--firstItemSelected>true</firstItemSelected-->
+        <columnName>REV_ACC.REF_OFFICE</columnName>
+        <listId>USER_OFFICE_LIST</listId>
+        <disabled>true</disabled>
+        <isVisible>N</isVisible>
+      </field>
+    </criteriaFields>
+    <advancedCriteriaFields forField="Individual">
+      <field>
+        <fieldName>firstName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>First Name</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.first_name</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+      </field>
+      <field>
+        <fieldName>lastName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Last Name</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.last_name</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+        <alternateParameter>middleName</alternateParameter>
+        <alternateOperator>OR</alternateOperator>
+      </field>  
+       <field>
+        <fieldName>maidenName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Maiden Name</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.mother_maiden_name</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+        <alternateParameter>lastName</alternateParameter>
+        <alternateOperator>OR</alternateOperator>
+      </field>  
+       <field>
+        <fieldName>middleName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Middle Name</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.middle_name</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+         <alternateParameter>lastName</alternateParameter>
+         <alternateOperator>OR</alternateOperator>
+      </field>     
+       <field>
+        <fieldName>dateOfBirth</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Date Of Birth</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.DATE_OF_BIRTH</columnName>
+      </field> 
+    </advancedCriteriaFields>
+    <advancedCriteriaFields forField="Organization">
+      <field>
+        <fieldName>companyName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Company Name</fieldLabel>
+        <columnName>ENT_ORGANIZATION.legal_name</columnName>  
+        <fieldFunction>SOUNDEX</fieldFunction>  
+      </field>
+      <field>
+        <fieldName>tradingName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Trading Name</fieldLabel>
+        <columnName>ENT_ORGANIZATION.TRADING_AS</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+      </field>
+    </advancedCriteriaFields>
+    <resultFields>
+      <field>
+        <columnOrderNbr>1</columnOrderNbr>
+        <fieldName>entityType</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Entity Type</columnHeading>
+        <columnName>ENT_ENTITY.entity_type</columnName>
+        <getValueFromResources>Y</getValueFromResources>
+      </field>
+      <field>
+        <columnOrderNbr>2</columnOrderNbr>
+        <fieldName>entityName</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Name</columnHeading>
+        <columnName>replace(ENT_ENTITY.entity_name, 'SUFF_', '') as entity_name</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>3</columnOrderNbr>
+        <fieldName>Address</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Address</columnHeading>
+        <columnName>concat(decode(ENT_LOCATION.address1, null, '',concat(ENT_LOCATION.address1, ', ')), 
+                    concat(decode(ENT_LOCATION.address2, null, '',concat(ENT_LOCATION.address2, ', ')), 
+                    concat(decode(ENT_LOCATION.address3, null, '',concat(ENT_LOCATION.address3, ', ')), 
+                    concat(decode(ENT_LOCATION.address4, null, '', concat(ENT_LOCATION.address4, ', ')),
+                    concat(location1.description, concat(', ', concat(ref_location_by_country.description, concat(' ', ENT_LOCATION.postal_code))))))))
+                    as ADDRESS</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>5</columnOrderNbr>
+        <fieldName>tin</fieldName>
+        <fieldType>tinformat</fieldType>
+        <columnHeading>TIN</columnHeading>
+        <columnName>REV_ACC.ACCT_NO</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>99</columnOrderNbr>
+        <fieldName>EntityID</fieldName>
+        <fieldType>number</fieldType>
+        <columnHeading>EntityID</columnHeading>
+        <columnName>ENT_ENTITY.id</columnName>
+        <isIdField>Y</isIdField>
+        <isVisible>N</isVisible>
+      </field>
+      <field>
+        <columnOrderNbr>100</columnOrderNbr>
+        <fieldName>dType</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>dType</columnHeading>
+        <columnName>ENT_ENTITY.DTYPE</columnName>
+        <isVisible>N</isVisible>
+      </field>
+    </resultFields>
+    <searchTables>
+      <table>
+        <name>ENT_ENTITY full join ENT_LOCATION on ENT_ENTITY.id=ENT_LOCATION.ent_entity 
+                full join REV_ACC on ENT_ENTITY.id=REV_ACC.ent_entity 
+                full join REVENUE_DEFERMENT on REV_ACC.id = REVENUE_DEFERMENT.REVENUE_ACCOUNT_ID 
+                full join REV_ENTITY_ACC on REV_ACC.id = REV_ENTITY_ACC.id 
+                full join REF_LOCATION_BY_COUNTRY on ENT_LOCATION.city=TO_CHAR(REF_LOCATION_BY_COUNTRY.code) 
+                full join REF_LOCATION_BY_COUNTRY location1 on to_char(location1.code)=ENT_LOCATION.province</name>
+      </table>
+    </searchTables>
+    <joinQuery>(ENT_LOCATION.IDENTIFYING_ADDRESS_INDICATOR = 'T' or
+               ENT_LOCATION.IDENTIFYING_ADDRESS_INDICATOR is null) 
+               AND ENT_ENTITY.DTYPE in ('ORGANIZATION','INDIVIDUAL') 
+               AND REV_ACC.id = REVENUE_DEFERMENT.REVENUE_ACCOUNT_ID
+    </joinQuery>
+    <orderByFields>
+      <field>
+        <columnName>replace(ENT_ENTITY.entity_name, 'SUFF_', '')</columnName>
+        <order>asc</order>
+      </field>
+    </orderByFields>
+    <dynamicQueryInjections>
+      <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_ENTITIES</withValue>
+        <where>(REV_ACC.REVENUE_TYPE = 'TAXPAYER' OR REV_ACC.REVENUE_TYPE IS
+               NULL)</where>
+      </dynamicQueryInjection>
+      <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_ENTITIES_WITH_TIN</withValue>
+        <where>(REV_ACC.REVENUE_TYPE = 'TAXPAYER')</where>
+      </dynamicQueryInjection>
+       <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_ENTITIES_CANBE_SUSPENDED</withValue>
+        <where>REV_ACC.REVENUE_TYPE = 'TAXPAYER' AND
+               REV_ACC.ENT_ENTITY IN (select ent_entity from rev_acc acct where ACCT.ACC_STATUS = 'REG'
+               AND ACCT.REVENUE_TYPE != 'TAXPAYER'  AND ACCT.REVENUE_TYPE != 'GUA' ) 
+        </where> 
+      </dynamicQueryInjection>
+      <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_ENTITIES_CANBE_REACTIVATED</withValue>
+        <where>REV_ACC.REVENUE_TYPE = 'TAXPAYER' AND
+               REV_ACC.ENT_ENTITY IN (select ent_entity from rev_acc acct where ACCT.ACC_STATUS = 'SUSP'
+               AND ACCT.REVENUE_TYPE != 'TAXPAYER'  AND ACCT.REVENUE_TYPE != 'GUA' ) 
+        </where> 
+      </dynamicQueryInjection>
+        <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_ENTITIES_CANBE_DEREGISTERED</withValue>
+        <where>REV_ACC.REVENUE_TYPE = 'TAXPAYER' AND
+               REV_ACC.ENT_ENTITY IN (select ent_entity from rev_acc acct where ACCT.ACC_STATUS = 'REG'
+               AND ACCT.REVENUE_TYPE != 'TAXPAYER'  AND ACCT.REVENUE_TYPE != 'GUA' ) 
+        </where> 
+      </dynamicQueryInjection>
+        <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_ENTITIES_CANBE_REREGISTERED</withValue>
+        <where>REV_ACC.REVENUE_TYPE = 'TAXPAYER' AND
+               REV_ACC.ENT_ENTITY IN (select ent_entity from rev_acc acct where ACCT.ACC_STATUS = 'DE-REG'
+               AND ACCT.REVENUE_TYPE != 'TAXPAYER'  AND ACCT.REVENUE_TYPE != 'GUA' ) 
+        </where> 
+      </dynamicQueryInjection>
+        <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_ENTITIES_CAN_BRANCH</withValue>
+        <where>(REV_ACC.OPERATING_AS != 'BRANCH' OR OPERATING_AS IS NULL)</where> 
+      </dynamicQueryInjection>
+      <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_WITH_CUSTOMS_ACCOUNT</withValue>
+        <table>
+          <name>REV_ACC CUST </name>
+        </table>
+        <where>REV_ACC.REVENUE_TYPE = 'TAXPAYER' 
+                and CUST.REVENUE_TYPE = 'CUSTOMS' 
+                and REV_ACC.ENT_ENTITY = CUST.ENT_ENTITY 
+                and (CUST.ACC_STATUS = 'REG' or CUST.ACC_STATUS = 'RE-REG') </where>
+      </dynamicQueryInjection>
+      <dynamicQueryInjection>
+        <forField>forField</forField>
+        <withValue>Organization</withValue>
+        <table>
+          <name>ENT_ORGANIZATION, </name>
+        </table>
+        <where>ENT_ENTITY.id=ENT_ORGANIZATION.id</where>
+      </dynamicQueryInjection>
+      <dynamicQueryInjection>
+        <forField>forField</forField>
+        <withValue>Individual</withValue>
+        <table>
+          <name>ENT_INDIVIDUAL</name>
+        </table>
+        <where>ENT_ENTITY.id=ENT_INDIVIDUAL.id</where>
+      </dynamicQueryInjection>
+    </dynamicQueryInjections>
+    <actions>
+      <action>
+        <actionId>view</actionId>
+        <actionLabel>Continue</actionLabel>
+        <actionCallBack>view</actionCallBack>
+        <allowableModes>viewMode</allowableModes>
+      </action>
+      <action>
+        <actionId>edit</actionId>
+        <actionLabel>Continue</actionLabel>
+        <actionCallBack>edit</actionCallBack>
+        <allowableModes>editMode</allowableModes>
+      </action>
+      <action>
+        <actionId>add</actionId>
+        <actionLabel>Continue</actionLabel>
+        <actionCallBack>add</actionCallBack>
+        <allowableModes>addMode</allowableModes>
+      </action>
+    </actions>
+  </search>  
+  <search>
+    <id>FIND_TRANSACTION_FOR_INSTALLMENT_AGREEMENT</id>
+    <sectionHeading>Find Transaction for Installment Agreement</sectionHeading>
+    <windowHeading>Find Transaction for Installment Agreement</windowHeading>
+    <supportsMultiQueryInjections>Y</supportsMultiQueryInjections>
+    <queryType>distinct</queryType>
+    <criteriaFields>
+      <field>
+        <fieldName>accountNumber</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>TIN</fieldLabel>
+        <columnName>TAXPAYER_IDENTIFIER_VIEW.TIN</columnName>
+      </field>
+      <field>
+        <fieldName>revenueType</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Tax Type</fieldLabel>
+        <columnName>REV_ACC.REVENUE_TYPE</columnName>
+        <listId>REV_TYPE</listId>
+      </field>
+      <field>
+        <fieldName>period</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Return Period</fieldLabel>
+        <columnName>REVLED_REV_PERIOD.PERIOD_END</columnName>
+      </field>
+      <field>
+        <fieldName>transactionType</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Transaction Type</fieldLabel>
+        <columnName>REVLED_TRANSACTION.TRANSACTION_TYPE</columnName>
+        <listId>TRANSACTION_TYPE</listId>
+        <isVisible>N</isVisible>
+      </field>
+      <field>
+        <fieldName>startDate</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Date from</fieldLabel>
+        <columnName>REVLED_TRANSACTION.CREATED_DATE</columnName>
+        <operator>&gt;=</operator>
+        <isVisible>N</isVisible>
+      </field>
+      <field>
+        <fieldName>transactionRef</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Transaction Ref</fieldLabel>
+        <columnName>REVLED_TRANSACTION.TRANSACTION_REF</columnName>
+      </field>
+      <field>
+        <fieldName>endDate</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Date to</fieldLabel>
+        <columnName>REVLED_TRANSACTION.CREATED_DATE</columnName>
+        <operator>&lt;=</operator>
+        <isVisible>N</isVisible>
+      </field>
+      <field>
+        <fieldName>amountFrom</fieldName>
+        <fieldType>number</fieldType>
+        <fieldLabel>Amount From</fieldLabel>
+        <columnName>REVLED_TRANSACTION.amount</columnName>
+        <operator>&gt;=</operator>
+        <isVisible>N</isVisible>
+      </field>
+      <field>
+        <fieldName>amountTo</fieldName>
+        <fieldType>number</fieldType>
+        <fieldLabel>Amount to</fieldLabel>
+        <columnName>REVLED_TRANSACTION.amount</columnName>
+        <operator>&lt;=</operator>
+        <isVisible>N</isVisible>
+      </field>
+      <field>
+        <fieldName>office</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Office</fieldLabel>
+        <columnName>REV_ACC.REF_OFFICE</columnName>
+        <listId>USER_OFFICE_LIST</listId>
+        <disabled>true</disabled>
+        <isVisible>N</isVisible>
+      </field>
+    </criteriaFields>
+    <resultFields>
+      <field>
+        <fieldName>ID</fieldName>
+        <fieldType>string</fieldType>
+        <columnOrderNbr>1</columnOrderNbr>
+        <columnHeading>ID</columnHeading>
+        <columnName>REVLED_TRANSACTION.ID</columnName>
+        <isIdField>Y</isIdField>
+        <isVisible>N</isVisible>
+      </field>
+      <field>
+        <fieldName>TRANSACTION_REF</fieldName>
+        <fieldType>string</fieldType>
+        <columnOrderNbr>2</columnOrderNbr>
+        <columnHeading>Transaction Ref</columnHeading>
+        <columnName>REVLED_TRANSACTION.TRANSACTION_REF</columnName>
+      </field>
+      <field>
+        <fieldName>ACCT_NO</fieldName>
+        <fieldType>tinformat</fieldType>
+        <columnOrderNbr>3</columnOrderNbr>
+        <columnHeading>TIN</columnHeading>
+        <columnName>TAXPAYER_IDENTIFIER_VIEW.ACCT_NO</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>4</columnOrderNbr>
+        <fieldName>entityName</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Name</columnHeading>
+        <columnName>replace(ENT_ENTITY.entity_name, 'SUFF_', '') as entity_name</columnName>
+      </field>
+      <field>
+        <fieldName>REVENUE_TYPE</fieldName>
+        <fieldType>string</fieldType>
+        <columnOrderNbr>5</columnOrderNbr>
+        <columnHeading>Tax Type</columnHeading>
+        <columnName>REV_ACC.REVENUE_TYPE</columnName>
+      </field>
+      <field>
+        <fieldName>PERIOD_NO</fieldName>
+        <fieldType>string</fieldType>
+        <columnOrderNbr>6</columnOrderNbr>
+        <columnHeading>Return Period</columnHeading>
+        <columnName>REVLED_REV_PERIOD.PERIOD_NO</columnName>
+        <isVisible>N</isVisible>
+      </field>
+      <field>
+        <fieldName>PERIOD_END</fieldName>
+        <fieldType>date</fieldType>
+        <columnOrderNbr>7</columnOrderNbr>
+        <columnHeading>Return Period</columnHeading>
+        <columnName>REVLED_REV_PERIOD.PERIOD_END</columnName>
+      </field>
+      <field>
+        <fieldName>PERIOD_YEAR</fieldName>
+        <fieldType>string</fieldType>
+        <columnOrderNbr>8</columnOrderNbr>
+        <columnHeading>Year</columnHeading>
+        <columnName>REVLED_REV_PERIOD.period_year</columnName>
+        <isVisible>N</isVisible>
+      </field>
+      <field>
+        <fieldName>TRANSACTION_TYPE</fieldName>
+        <fieldType>string</fieldType>
+        <columnOrderNbr>9</columnOrderNbr>
+        <columnHeading>TransactionType</columnHeading>
+        <columnName>REVLED_TRANSACTION.TRANSACTION_TYPE</columnName>
+      </field>
+      <field>
+        <fieldName>AMOUNT</fieldName>
+        <fieldType>decimal</fieldType>
+        <columnOrderNbr>10</columnOrderNbr>
+        <columnHeading>Amount</columnHeading>
+        <columnName>REVLED_TRANSACTION.amount</columnName>
+        <decimalLength>2</decimalLength>
+        <putThousandSeparator>true</putThousandSeparator>
+      </field>
+      <field>
+        <fieldName>BALANCE</fieldName>
+        <fieldType>decimal</fieldType>
+        <columnOrderNbr>11</columnOrderNbr>
+        <columnHeading>Balance Due</columnHeading>
+        <columnName>REVLED_TRANSACTION.BALANCE</columnName>
+        <decimalLength>2</decimalLength>
+        <putThousandSeparator>true</putThousandSeparator>
+      </field>
+      <field>
+        <fieldName>TRNSACTION_DATE</fieldName>
+        <fieldType>date</fieldType>
+        <columnOrderNbr>12</columnOrderNbr>
+        <columnHeading>Transaction Date</columnHeading>
+        <columnName>REVLED_TRANSACTION.TRANSACTION_DATE</columnName>
+      </field>
+      <field>
+        <fieldName>REVENUE_ACCOUNT_ID</fieldName>
+        <fieldType>date</fieldType>
+        <columnOrderNbr>13</columnOrderNbr>
+        <columnHeading>REVENUE_ACCOUNT_ID</columnHeading>
+        <columnName>REV_ACC.ID AS REVENUE_ACCOUNT_ID</columnName>
+        <isVisible>N</isVisible>
+      </field>
+      <field>
+        <fieldName>ENTITY_ID</fieldName>
+        <fieldType>date</fieldType>
+        <columnOrderNbr>14</columnOrderNbr>
+        <columnHeading>ENTITY_ID</columnHeading>
+        <columnName>REV_ACC.ENT_ENTITY</columnName>
+        <isVisible>N</isVisible>
+      </field>
+    </resultFields>
+    <searchTables>
+      <table>
+        <name>REVLED_REV_PERIOD 
+                LEFT OUTER JOIN REVLED_TRANSACTION ON REVLED_TRANSACTION.REVLED_REV_PERIOD = REVLED_REV_PERIOD.ID 
+                LEFT OUTER JOIN REV_ACC ON REVLED_TRANSACTION.REV_ACC = REV_ACC.ID 
+                LEFT OUTER JOIN TAXPAYER_IDENTIFIER_VIEW ON REV_ACC.ENT_ENTITY = TAXPAYER_IDENTIFIER_VIEW.ENT_ENTITY
+                LEFT OUTER JOIN ENT_ENTITY ON ENT_ENTITY.ID = TAXPAYER_IDENTIFIER_VIEW.ENT_ENTITY</name>
+      </table>
+     </searchTables>
+    <dynamicQueryInjections>
+      <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>AMOUNT_GREATER_THAN_ZERO</withValue>
+        <where>REVLED_TRANSACTION.amount &gt; 0</where>
+      </dynamicQueryInjection>
+      <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_TRANSACTIONS_FOR_DEFRMENT</withValue>
+        <where>REVLED_TRANSACTION.amount &gt; 0 
+                AND REVLED_TRANSACTION.TRANSACTION_TYPE = 'RETURN'
+                AND REVLED_TRANSACTION.ID NOT IN (SELECT REVENUE_DEFERMENT.TRANSACTION_ID FROM REVENUE_DEFERMENT WHERE DEFERMENT_STATUS = 'POST')
+        </where>
+      </dynamicQueryInjection>
+    </dynamicQueryInjections>
+    <actions>
+      <action>
+        <actionId>view</actionId>
+        <actionLabel>View</actionLabel>
+        <actionCallBack>view</actionCallBack>
+        <allowableModes>viewMode</allowableModes>
+      </action>
+      <action>
+        <actionId>edit</actionId>
+        <actionLabel>Edit</actionLabel>
+        <actionCallBack>edit</actionCallBack>
+        <allowableModes>editMode</allowableModes>
+      </action>
+      <action>
+        <actionId>add</actionId>
+        <actionLabel>Create</actionLabel>
+        <actionCallBack>add</actionCallBack>
+        <allowableModes>addMode</allowableModes>
+      </action>
+    </actions>
+  </search>
+  <search>
+    <id>FIND_ENTITY_ACQUIRED_ASSETS</id>
+    <sectionHeading>Find Taxpayer for Acquired Assets</sectionHeading>
+    <windowHeading>Trips - Find Taxpayer for Acquired Assets</windowHeading>
+    <advancedSearchAvailable>Y</advancedSearchAvailable>
+    <multiAdvancedSearchAvailable>Basic</multiAdvancedSearchAvailable>
+    <multiSearchFieldColumnName>ENT_ENTITY.ENTITY_TYPE</multiSearchFieldColumnName>
+    <supportsMultiQueryInjections>Y</supportsMultiQueryInjections>
+    <queryType>distinct</queryType>
+    <criteriaFields>
+      <field>
+        <fieldName>forField</fieldName>
+        <fieldType>forField</fieldType>
+        <fieldLabel>Entity Type</fieldLabel>
+        <columnName>ENT_ENTITY.DTYPE</columnName>
+      </field>
+       <field>
+        <fieldName>legalStatus</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Legal Status</fieldLabel>
+        <columnName>ENT_ENTITY.LEGAL_STATUS</columnName>
+        <listId>LEGAL_STATUS_TYPE</listId>
+      </field>  
+      <field>
+        <fieldName>accountNumber</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Taxpayer Number</fieldLabel>
+        <columnName>REV_ACC.ACCT_NO</columnName>
+         <isVisible>N</isVisible>
+      </field>  
+       <field>
+        <fieldName>taxpayerCode</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Taxpayer Number</fieldLabel>
+        <columnName>REV_ENTITY_ACC.TP_IDENTIFIER_CODE</columnName>
+      </field>  
+       <field>
+        <fieldName>branchCode</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Branch Number</fieldLabel>
+        <columnName>REV_ENTITY_ACC.TP_BRANCH_CODE</columnName>
+      </field>  
+       <field>
+        <fieldName>office</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Office</fieldLabel>
+        <!--firstItemSelected>true</firstItemSelected-->
+        <columnName>REV_ACC.REF_OFFICE</columnName>
+        <listId>USER_OFFICE_LIST</listId>
+        <disabled>true</disabled>
+        <isVisible>N</isVisible>
+      </field>
+    </criteriaFields>
+    <advancedCriteriaFields forField="Individual">
+      <field>
+        <fieldName>firstName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>First Name</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.first_name</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+      </field>
+      <field>
+        <fieldName>lastName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Last Name</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.last_name</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+        <alternateParameter>middleName</alternateParameter>
+        <alternateOperator>OR</alternateOperator>
+      </field>  
+       <field>
+        <fieldName>maidenName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Maiden Name</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.mother_maiden_name</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+        <alternateParameter>lastName</alternateParameter>
+        <alternateOperator>OR</alternateOperator>
+      </field>  
+       <field>
+        <fieldName>middleName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Middle Name</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.middle_name</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+         <alternateParameter>lastName</alternateParameter>
+         <alternateOperator>OR</alternateOperator>
+      </field>     
+       <field>
+        <fieldName>dateOfBirth</fieldName>
+        <fieldType>date</fieldType>
+        <fieldLabel>Date Of Birth</fieldLabel>
+        <columnName>ENT_INDIVIDUAL.DATE_OF_BIRTH</columnName>
+      </field> 
+    </advancedCriteriaFields>
+    <advancedCriteriaFields forField="Organization">
+      <field>
+        <fieldName>companyName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Company Name</fieldLabel>
+        <columnName>ENT_ORGANIZATION.legal_name</columnName>  
+        <fieldFunction>SOUNDEX</fieldFunction>  
+      </field>
+      <field>
+        <fieldName>tradingName</fieldName>
+        <fieldType>string</fieldType>
+        <fieldLabel>Trading Name</fieldLabel>
+        <columnName>ENT_ORGANIZATION.TRADING_AS</columnName>
+        <fieldFunction>SOUNDEX</fieldFunction> 
+      </field>
+    </advancedCriteriaFields>
+    <resultFields>
+      <field>
+        <columnOrderNbr>1</columnOrderNbr>
+        <fieldName>entityType</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Entity Type</columnHeading>
+        <columnName>ENT_ENTITY.entity_type</columnName>
+        <getValueFromResources>Y</getValueFromResources>
+      </field>
+      <field>
+        <columnOrderNbr>2</columnOrderNbr>
+        <fieldName>entityName</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Name</columnHeading>
+        <columnName>replace(ENT_ENTITY.entity_name, 'SUFF_', '') as entity_name</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>3</columnOrderNbr>
+        <fieldName>Address</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>Address</columnHeading>
+        <columnName>concat(decode(ENT_LOCATION.address1, null, '',concat(ENT_LOCATION.address1, ', ')), 
+                    concat(decode(ENT_LOCATION.address2, null, '',concat(ENT_LOCATION.address2, ', ')), 
+                    concat(decode(ENT_LOCATION.address3, null, '',concat(ENT_LOCATION.address3, ', ')), 
+                    concat(decode(ENT_LOCATION.address4, null, '', concat(ENT_LOCATION.address4, ', ')),
+                    concat(location1.description, concat(', ', concat(ref_location_by_country.description, concat(' ', ENT_LOCATION.postal_code))))))))
+                    as ADDRESS</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>5</columnOrderNbr>
+        <fieldName>tin</fieldName>
+        <fieldType>tinformat</fieldType>
+        <columnHeading>TIN</columnHeading>
+        <columnName>REV_ACC.ACCT_NO</columnName>
+      </field>
+      <field>
+        <columnOrderNbr>99</columnOrderNbr>
+        <fieldName>EntityID</fieldName>
+        <fieldType>number</fieldType>
+        <columnHeading>EntityID</columnHeading>
+        <columnName>ENT_ENTITY.id</columnName>
+        <isIdField>Y</isIdField>
+        <isVisible>N</isVisible>
+      </field>
+      <field>
+        <columnOrderNbr>100</columnOrderNbr>
+        <fieldName>dType</fieldName>
+        <fieldType>string</fieldType>
+        <columnHeading>dType</columnHeading>
+        <columnName>ENT_ENTITY.DTYPE</columnName>
+        <isVisible>N</isVisible>
+      </field>
+    </resultFields>
+    <searchTables>
+      <table>
+        <name>ENT_ENTITY left outer join ENT_LOCATION on ENT_ENTITY.id=ENT_LOCATION.ent_entity left outer join REV_ACC on ENT_ENTITY.id=REV_ACC.ent_entity inner join REV_ENTITY_ACC on REV_ACC.id = REV_ENTITY_ACC.id left outer join REF_LOCATION_BY_COUNTRY on ENT_LOCATION.city=TO_CHAR(REF_LOCATION_BY_COUNTRY.code) left outer join REF_LOCATION_BY_COUNTRY location1 on to_char(location1.code)=ENT_LOCATION.province</name>
+      </table>
+    </searchTables>
+    <joinQuery>(ENT_LOCATION.IDENTIFYING_ADDRESS_INDICATOR = 'T' or
+               ENT_LOCATION.IDENTIFYING_ADDRESS_INDICATOR is null) AND
+               ENT_ENTITY.DTYPE in ('ORGANIZATION','INDIVIDUAL')
+    </joinQuery>
+    <orderByFields>
+      <field>
+        <columnName>replace(ENT_ENTITY.entity_name, 'SUFF_', '')</columnName>
+        <order>asc</order>
+      </field>
+    </orderByFields>
+    <dynamicQueryInjections>
+      <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_ENTITIES</withValue>
+        <where>(REV_ACC.REVENUE_TYPE = 'TAXPAYER' OR REV_ACC.REVENUE_TYPE IS
+               NULL)</where>
+      </dynamicQueryInjection>
+      <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_ENTITIES_WITH_TIN</withValue>
+        <where>(REV_ACC.REVENUE_TYPE = 'TAXPAYER')</where>
+      </dynamicQueryInjection>
+       <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_ENTITIES_CANBE_SUSPENDED</withValue>
+        <where>REV_ACC.REVENUE_TYPE = 'TAXPAYER' AND
+               REV_ACC.ENT_ENTITY IN (select ent_entity from rev_acc acct where ACCT.ACC_STATUS = 'REG'
+               AND ACCT.REVENUE_TYPE != 'TAXPAYER'  AND ACCT.REVENUE_TYPE != 'GUA' ) 
+        </where> 
+      </dynamicQueryInjection>
+      <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_ENTITIES_CANBE_REACTIVATED</withValue>
+        <where>REV_ACC.REVENUE_TYPE = 'TAXPAYER' AND
+               REV_ACC.ENT_ENTITY IN (select ent_entity from rev_acc acct where ACCT.ACC_STATUS = 'SUSP'
+               AND ACCT.REVENUE_TYPE != 'TAXPAYER'  AND ACCT.REVENUE_TYPE != 'GUA' ) 
+        </where> 
+      </dynamicQueryInjection>
+        <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_ENTITIES_CANBE_DEREGISTERED</withValue>
+        <where>REV_ACC.REVENUE_TYPE = 'TAXPAYER' AND
+               REV_ACC.ENT_ENTITY IN (select ent_entity from rev_acc acct where ACCT.ACC_STATUS = 'REG'
+               AND ACCT.REVENUE_TYPE != 'TAXPAYER'  AND ACCT.REVENUE_TYPE != 'GUA' ) 
+        </where> 
+      </dynamicQueryInjection>
+        <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_ENTITIES_CANBE_REREGISTERED</withValue>
+        <where>REV_ACC.REVENUE_TYPE = 'TAXPAYER' AND
+               REV_ACC.ENT_ENTITY IN (select ent_entity from rev_acc acct where ACCT.ACC_STATUS = 'DE-REG'
+               AND ACCT.REVENUE_TYPE != 'TAXPAYER'  AND ACCT.REVENUE_TYPE != 'GUA' ) 
+        </where> 
+      </dynamicQueryInjection>
+        <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_ENTITIES_CAN_BRANCH</withValue>
+        <where>(REV_ACC.OPERATING_AS != 'BRANCH' OR OPERATING_AS IS NULL)</where> 
+      </dynamicQueryInjection>
+      <dynamicQueryInjection>
+        <forField>STATIC_SEARCH_INJECTION</forField>
+        <withValue>FIND_ENTITY_WITH_CUSTOMS_ACCOUNT</withValue>
+        <table>
+          <name>REV_ACC CUST </name>
+        </table>
+        <where>REV_ACC.REVENUE_TYPE = 'TAXPAYER' and CUST.REVENUE_TYPE = 'CUSTOMS' and REV_ACC.ENT_ENTITY = CUST.ENT_ENTITY and (CUST.ACC_STATUS = 'REG' or CUST.ACC_STATUS = 'RE-REG') </where>
+      </dynamicQueryInjection>
+      <dynamicQueryInjection>
+        <forField>forField</forField>
+        <withValue>Organization</withValue>
+        <table>
+          <name>ENT_ORGANIZATION, </name>
+        </table>
+        <where>ENT_ENTITY.id=ENT_ORGANIZATION.id</where>
+      </dynamicQueryInjection>
+      <dynamicQueryInjection>
+        <forField>forField</forField>
+        <withValue>Individual</withValue>
+        <table>
+          <name>ENT_INDIVIDUAL</name>
+        </table>
+        <where>ENT_ENTITY.id=ENT_INDIVIDUAL.id</where>
+      </dynamicQueryInjection>
+    </dynamicQueryInjections>
+    <actions>
+      <action>
+        <actionId>view</actionId>
+        <actionLabel>Continue</actionLabel>
+        <actionCallBack>view</actionCallBack>
+        <allowableModes>viewMode</allowableModes>
+      </action>
+      <action>
+        <actionId>edit</actionId>
+        <actionLabel>Continue</actionLabel>
+        <actionCallBack>edit</actionCallBack>
+        <allowableModes>editMode</allowableModes>
+      </action>
+      <action>
+        <actionId>add</actionId>
+        <actionLabel>Continue</actionLabel>
+        <actionCallBack>add</actionCallBack>
+        <allowableModes>addMode</allowableModes>
+      </action>
+    </actions>
+  </search>  
+</searchList>

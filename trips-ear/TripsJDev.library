@@ -1,0 +1,38 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<JLibraryNode nselem="JLibraryNode" class="oracle.jdeveloper.library.JLibraryNode" deployedByDefault="false" xmlns="http://xmlns.oracle.com/jdeveloper/101303/jlibrarynode">
+   <classPath>
+      <entries>
+         <Item path="../Projects/trips-ear/afc.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/biaddinsrt.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/bpm-infra.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/bpm-services.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/castor-1.1-xml.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/commons-logging.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/cube-i18n.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/log4j.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/oc4jclient.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/orabpel-ant.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/orabpel-boot.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/orabpel-common.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/orabpel-exts.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/orabpel-thirdparty.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/orabpel.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/oracle_http_client.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/rl.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/rulesdk.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/servlet.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/xercesImpl.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/xml.jar" jar-entry=""/>
+         <Item path="../Projects/trips-ear/xmlparserv2.jar" jar-entry=""/>
+		 <Item path="../Projects/trips-ear/poi-3.5-FINAL.jar" jar-entry=""/>
+      </entries>
+   </classPath>
+   <docPath>
+      <entries class="[Ljava.net.URL;"/>
+   </docPath>
+   <locked>false</locked>
+   <name>TripsJDev</name>
+   <sourcePath>
+      <entries class="[Ljava.net.URL;"/>
+   </sourcePath>
+</JLibraryNode>

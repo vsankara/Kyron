@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema targetNamespace="http://trips.technobrain.com/application/message"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://trips.technobrain.com/application/message"
+            xmlns:core="http://trips.technobrain.com/core/message"
+            xmlns:revcoll="http://trips.technobrain.com/collection/message">
+ <xsd:import namespace="http://trips.technobrain.com/core/message" schemaLocation="trips-core.xsd"/>
+ 
+ <xsd:element name="ApplicationInputType" type="ApplicationInputType"/>
+ <xsd:complexType name="ApplicationInputType">
+  <xsd:complexContent>
+   <xsd:extension base="core:DdocDocumentInputType">
+    <xsd:sequence>
+     <xsd:element name="AccountsOfficeAddress" type="xsd:string" minOccurs="0"/>
+     <xsd:element name="AttachmentCount" type="xsd:int" minOccurs="0"/>
+     <!--xsd:element name="ApplicationDate" type="xsd:date" minOccurs="0"/-->
+     <xsd:element name="ApplicationFeeIndicator" type="xsd:boolean" minOccurs="0"/>
+     <xsd:element name="ApplicationReference" type="xsd:string" minOccurs="0"/>
+     <!--xsd:element name="ApplicationStatus" type="xsd:string" minOccurs="0"/-->
+     <xsd:element name="AuthorisationType" type="xsd:string" minOccurs="0"/>
+     <xsd:element name="CommercialAccounts" type="xsd:string" minOccurs="0"/>
+     <xsd:element name="PreviousAuthorisationNo" type="xsd:string" minOccurs="0"/>
+     <xsd:element name="EntityId" type="xsd:long" minOccurs="0" maxOccurs="1"/>
+     <xsd:element name="AppAuthorisation" type="ApplicationAuthorisationInputType" minOccurs="0"/>
+     <xsd:element name="CanApproveReject" type="xsd:boolean" minOccurs="0"/>     
+     <xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+     <xsd:element name="Reason" type="xsd:string" minOccurs="0"/>
+     <xsd:element name="RejectReason" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ 
+ 
+
+ <xsd:element name="ApplicationAuthorisationInputType" type="ApplicationAuthorisationInputType"/>
+ <xsd:complexType name="ApplicationAuthorisationInputType">
+  <xsd:complexContent>
+   <xsd:extension base="core:InputType">
+    <xsd:sequence>
+     <xsd:element name="AuthDate" type="xsd:date" minOccurs="0"/>
+     <xsd:element name="AuthEffectiveDate" type="xsd:date" minOccurs="0"/>
+     <xsd:element name="AuthExpiryDate" type="xsd:date" minOccurs="0"/>
+     <xsd:element name="AuthReference" type="xsd:string" minOccurs="0"/>
+     <xsd:element name="AuthStatus" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>
+ 
+ 
+ 
+ <xsd:element name="EntityAppInputType" type="EntityAppInputType"/>
+ <xsd:complexType name="EntityAppInputType">
+  <xsd:complexContent>
+   <xsd:extension base="ApplicationInputType">
+    <xsd:sequence>
+     <xsd:element name="NewOffice" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>  
+ 
+ 
+ <xsd:element name="RevenueTypeAppInputType" type="RevenueTypeAppInputType"/>
+ <xsd:complexType name="RevenueTypeAppInputType">
+  <xsd:complexContent>
+   <xsd:extension base="ApplicationInputType">
+    <xsd:sequence>
+     <xsd:element name="RevenueType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+     <xsd:element name="AutoRefundInd" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+     <xsd:element name="RefundInhibitInd" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>     
+    </xsd:sequence>
+   </xsd:extension>
+  </xsd:complexContent>
+ </xsd:complexType>   
+ 
+ 
+</xsd:schema>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			xmlns:tns="http://trips.technobrain.com/interfaces/basetypes/message" 
+			targetNamespace="http://trips.technobrain.com/interfaces/basetypes/message" 
+			elementFormDefault="qualified" attributeFormDefault="unqualified" version="2">
+
+	
+	<!-- *********************************** Exceptions/Errors *********************************** -->
+	<xs:complexType name="ErrorType">
+		<xs:sequence>
+			<xs:element name="errorCode" type="xs:string"/>
+			<xs:element name="errorDescription" type="xs:string"/>
+			<xs:element name="trace" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="TripsWSException" type="tns:TripsWSException"/>
+	<xs:complexType name="TripsWSException">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="trace" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="ResultCodeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SUCCESS"/>
+			<xs:enumeration value="FAILURE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="NameType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="25"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="OrganisationNameType">
+		<!-- Free text -->
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="60"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	
+	<xs:complexType name="BusinessSectorType">
+		<xs:sequence>
+			<xs:element name="code" type="xs:string" minOccurs="0"/>
+			<!-- TODO: need to standardise on only sending Code if that's the approach -->
+			<!--Refers to Table Name REF_BUSINESS_SECTOR-->
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="primaryBusinessSector" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	<!-- *********************************** Response base *********************************** -->
+	<xs:complexType name="ServiceResponseType">
+		<xs:sequence>
+			<xs:element name="resultCode" type="tns:ResultCodeType"/>
+			<xs:element name="resultDescription" type="xs:string" minOccurs="0"/>
+			<xs:element name="hasErrors" type="xs:boolean"/>
+			<xs:element name="hasWarnings" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="trace" type="xs:string" minOccurs="0"/>
+			<xs:element name="error" type="tns:ErrorType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
